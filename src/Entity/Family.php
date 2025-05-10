@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FamilyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,17 @@ class Family
 
     #[ORM\Column(length: 60)]
     private ?string $slug = null;
+
+    /**
+     * @var Collection<int, Plant>
+     */
+    #[ORM\OneToMany(targetEntity: Plant::class, mappedBy: 'family')]
+    private Collection $plants;
+
+    public function __construct()
+    {
+        $this->plants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +118,36 @@ class Family
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Plant>
+     */
+    public function getPlants(): Collection
+    {
+        return $this->plants;
+    }
+
+    public function addPlant(Plant $plant): static
+    {
+        if (!$this->plants->contains($plant)) {
+            $this->plants->add($plant);
+            $plant->setFamily($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlant(Plant $plant): static
+    {
+        if ($this->plants->removeElement($plant)) {
+            // set the owning side to null (unless already changed)
+            if ($plant->getFamily() === $this) {
+                $plant->setFamily(null);
+            }
+        }
 
         return $this;
     }
