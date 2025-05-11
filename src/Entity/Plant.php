@@ -26,8 +26,8 @@ class Plant
     #[ORM\Column(length: 255)]
     private ?string $plantPicture = null;
 
-    // Représente le début de la période de semis, exprimée comme une date dans une année fictive (année 2000).
-    // L'année N'A AUCUNE VALEUR MÉTIER : seule le mois et le jour seront utilisés pour le calcul.
+    // Représente le début de la période de semis, exprimée avec une date dans une année fictive (année 2000).
+    // L'année N'A AUCUNE VALEUR MÉTIER : seule le mois et le jour seront utilisés pour les calcul.(notification feature )
     // 
     // Exemple : "2000-03-01" signifie "1er mars de chaque année".
 

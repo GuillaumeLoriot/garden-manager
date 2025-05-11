@@ -4,11 +4,19 @@ namespace App\DataFixtures;
 
 use App\Entity\Family;
 use App\Entity\Plant;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+
+ public function __construct(private UserPasswordHasherInterface $hasher) 
+    {
+    }
+
     public function load(ObjectManager $manager): void
     {
 
@@ -16,6 +24,8 @@ class AppFixtures extends Fixture
         $familyData = json_decode(file_get_contents(__DIR__.'/data/family_data.json'), true);
         $plantData = json_decode(file_get_contents(__DIR__.'/data/plant_data.json'), true);
         
+
+        // --------- FAMILIES --------------------------------------------------
         $families = [];
         // création des familles
         foreach ($familyData as $familyItem) {
@@ -33,7 +43,8 @@ class AppFixtures extends Fixture
             $families[$family->getSlug()] = $family;
         }
 
-                 // Créer les plantes et les associer aux familles
+        // --------- PLANTS ------------------------------------------------------
+        // Créer les plantes et les associer aux familles
         foreach ($plantData as $plantItem) {
 
             $familySlug = $plantItem['family_slug'];
@@ -68,6 +79,44 @@ class AppFixtures extends Fixture
 
             $manager->persist($plant);
         }
+
+         // --------- USERS ----------------------------------------------------------
+
+         $faker = Factory::create('fr_FR');
+
+        for($i=0; $i<7; $i++){
+            $user = new User();
+            $user
+              ->setEmail($faker->email())
+              ->setRoles(['ROLE_USER'])
+              ->setPassword($this->hasher->hashPassword($user, 'test'))
+              ->setUsername($faker->userName())
+              ->setCreatedAt($faker->dateTime());
+          
+            $manager->persist($user);
+
+        }
+        $regularUser = new User();
+        $regularUser
+          ->setEmail('regular@user.com')
+          ->setRoles(['ROLE_USER'])
+          ->setPassword($this->hasher->hashPassword($user, 'test'))
+          ->setUsername($faker->userName())
+          ->setCreatedAt($faker->dateTime());
+      
+        $manager->persist($regularUser);
+
+        $adminUser = new User();
+        $adminUser
+          ->setEmail('admin@mycorp.com')
+          ->setRoles(['ROLE_ADMIN'])
+          ->setPassword($this->hasher->hashPassword($adminUser, 'admin'))
+          ->setUsername($faker->userName())
+          ->setCreatedAt($faker->dateTime());
+      
+        $manager->persist($adminUser);
+
+         // --------- IMAGES -----------------------------------------
 
 
 

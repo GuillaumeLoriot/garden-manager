@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ parent() }} - Détail Famille
+{% endblock %}
+
+{% block body %}
+  <h1 class="text-center text-6xl font-semibold text-blue-900 mt-20">{{ family.name }}</h1>
+  <div class="flex justify-end rounded-2xl w-[90%] mx-auto mt-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+    <figure class="flex justify-center items-center rounded-2xl">
+      <img src="{{ asset('images/generic-family.jpg') }}" alt="vegetable picture" class="rounded-2xl" />
+    </figure>
+
+    <div class="flex flex-col p-8">
+      <div class="text-lg text-[#374151]">
+        <p class="font-bold">Description :</p>
+        <p>{{ family.description }}</p>
+      </div>
+      <div class="text-lg text-[#374151]">
+        <p class="font-bold">Charactéristiques Principales :</p>
+        <p>{{ family.characteristics }}</p>
+      </div>
+      <div class="text-lg text-[#374151]">
+        <p class="font-bold">Histoire :</p>
+        <p>{{ family.history }}</p>
+      </div>
+      <div class="text-lg text-[#374151]">
+        <p class="font-bold">Utilisation principale :</p>
+        <p>{{ family.mainUse }}</p>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center text-4xl font-semibold text-blue-900 my-10">Liste des plantes de cette famille</h2>
+    <div class="flex flex-wrap justify-evenly">
+      {% for plant in family.plants %}
+        <a href="{{ path('app_plants_item', { id: plant.id }) }}" class="bg-blue-900 text-[#ffffff] text-center w-[15%] m-5 font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform ml-5">{{ plant.name }}</a>
+      {% endfor %}
+    </div>
+{% endblock %}
