@@ -36,7 +36,7 @@ class Plant
  
     // Représente la fin de la période de semis.
     // Idem : l’année est arbitraire, seule la période dans l’année est pertinente.
-    // #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTime $sowingPeriodEnd = null;
 
     // voir commentaires précédents

@@ -4,7 +4,10 @@
 
 {% block body %}
 <main class="h-screen bg-[url(../images/background1.jpg)] bg-cover">
-
+<div class="mt-32">
+{{ form(search_form) }}
+</div>
+{{ dump(found_plants) }}
 </main>
 
 {% endblock %}

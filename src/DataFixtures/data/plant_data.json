@@ -1961,7 +1961,7 @@
     },
     {
         "name": "Pois chiche",
-        "category": "légumineuse",
+        "category": "légume",
         "description": "Le pois chiche est une légumineuse cultivée pour ses graines comestibles, riches en protéines et en fibres. Il est un ingrédient clé dans de nombreuses cuisines du monde, notamment dans les plats méditerranéens et du Moyen-Orient.",
         "plant_picture": "generic-vegetable.jpg",
         "sowing_period_start": "2000-04-01",
@@ -1981,7 +1981,7 @@
     },
     {
         "name": "Lentille",
-        "category": "légumineuse",
+        "category": "légume",
         "description": "La lentille est une petite légumineuse cultivée pour ses graines comestibles, riches en protéines et en fibres. Elle est un aliment de base dans de nombreuses cultures et utilisée dans des soupes, des salades et des plats végétariens.",
         "plant_picture": "generic-vegetable.jpg",
         "sowing_period_start": "2000-03-15",
@@ -2001,7 +2001,7 @@
     },
     {
         "name": "Soja",
-        "category": "légumineuse",
+        "category": "légume",
         "description": "Le soja est une légumineuse cultivée pour ses graines riches en protéines, en acides gras et en fibres. Il est un aliment de base dans de nombreuses cuisines asiatiques et utilisé dans la production de lait de soja, tofu, et autres produits.",
         "plant_picture": "generic-vegetable.jpg",
         "sowing_period_start": "2000-04-15",
