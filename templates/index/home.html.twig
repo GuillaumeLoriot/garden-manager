@@ -1,13 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}
+  Home
+{% endblock %}
 
 {% block body %}
-<main class="h-screen bg-[url(../images/background1.jpg)] bg-cover">
-<div class="mt-32">
-{{ form(search_form) }}
-</div>
-{{ dump(found_plants) }}
-</main>
+  <main class="h-screen bg-[url(../images/background1.jpg)] bg-cover">
+    <section id="hero-search-bar">
+      <div class="flex items-center justify-center min-h-screen">
+        {{ form_start(search_form) }}
 
+        <div class="mx-auto">
+          <!-- Barre de recherche + bouton -->
+          <div class="flex justify-center gap-4 mb-6">{{ form_widget(search_form.name, { attr: { class: 'w-full h-12 px-4 text-base border border-gray-400 rounded-lg' } }) }}
+            {{ form_widget(search_form.submit, { attr: { class: 'w-1/3 text-white bg-blue-900 hover:bg-stone-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center' } }) }}</div>
+
+          <!-- Filtres -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div>{{ form_label(search_form.category) }}
+              {{ form_widget(search_form.category, { attr: { class: 'w-full h-10 px-3 border border-gray-300 rounded-md' } }) }}</div>
+
+            <div>{{ form_label(search_form.waterNeed) }}
+              {{ form_widget(search_form.waterNeed, { attr: { class: 'w-full h-10 px-3 border border-gray-300 rounded-md' } }) }}</div>
+
+            <div>{{ form_label(search_form.sunlightNeed) }}
+              {{ form_widget(search_form.sunlightNeed, { attr: { class: 'w-full h-10 px-3 border border-gray-300 rounded-md' } }) }}</div>
+
+            <div>{{ form_label(search_form.sowingPeriodSearch) }}
+              {{ form_widget(search_form.sowingPeriodSearch, { attr: { class: 'no-year w-full h-10' } }) }}</div>
+
+            <div>{{ form_label(search_form.plantingPeriodSearch) }}
+              {{ form_widget(search_form.plantingPeriodSearch, { attr: { class: 'no-year w-full h-10' } }) }}</div>
+
+            <div>{{ form_label(search_form.harvestPeriodSearch) }}
+              {{ form_widget(search_form.harvestPeriodSearch, { attr: { class: 'no-year w-full h-10' } }) }}</div>
+          </div>
+        </div>
+        {{ form_end(search_form) }}
+      </div>
+    </section>
+    <section id="search-results">
+      <ul class="flex flex-wrap justify-evenly mt-6">
+        {% for plant in found_plants %}
+          <li class="flex flex-col rounded-2xl w-[20%] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+            <figure class="flex justify-center items-center rounded-2xl">
+              <img src="{{ asset('images/' ~ plant.plantPicture) }}" alt="vegetable picture" class="rounded-t-2xl" />
+            </figure>
+
+            <div class="flex flex-col p-8">
+              <div class="text-3xl font-bold text-[#374151] pb-6">
+                <h2>{{ plant.name }}</h2>
+              </div>
+              <div class="text-lg text-[#374151]">
+                <p>{{ plant.description }}</p>
+              </div>
+              <div class="flex justify-end pt-6">
+                <button class="bg-blue-900 text-[#ffffff] w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform"><a href="{{ path('app_plants_item', { id: plant.id }) }}">En voir plus</a></button>
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
 {% endblock %}

@@ -5,49 +5,49 @@
 {% endblock %}
 
 {% block body %}
-  <div class="h-screen flex justify-evenly items-center">
-    <div class="flex rounded-2xl w-[50%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+  <main class="h-screen flex justify-evenly items-center">
+    <section  id="general-infos" class="flex rounded-2xl w-[50%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
       <div class="flex flex-col justify-around items-center rounded-2xl">
-        <img src="{{ asset('images/' ~ plant.plantPicture) }}" alt="vegetable picture" class="rounded-2xl ml-5" />
+        <img src="{{ asset('images/' ~ plant.plantPicture) }}" alt="Photo de la plante {{ plant.name }}" class="rounded-2xl ml-5" />
         <a href="{{ path('app_families_item', { id: plant.family.id }) }}" class="bg-blue-900 text-[#ffffff] text-center w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform ml-5">Voir famille des {{ plant.family.name }}</a>
       </div>
 
-      <div class="flex flex-col justify-between p-8">
-        <div class="text-3xl font-bold text-[#374151] pb-6">
+      <ul class="flex flex-col justify-between p-8">
+        <li class="text-3xl font-bold text-[#374151] pb-6">
           <h2>{{ plant.name }}</h2>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p>Category : {{ plant.category }}</p>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p>Description : {{ plant.description }}</p>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p>Période de semis : du {{ plant.sowingPeriodStart|date('d/m') }}
             au {{ plant.sowingPeriodEnd|date('d/m') }}</p>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p>Période de plantation : du {{ plant.plantingPeriodStart|date('d/m') }}
             au {{ plant.plantingPeriodEnd|date('d/m') }}</p>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p>Période de récolte : du {{ plant.harvestPeriodStart|date('d/m') }}
             au {{ plant.harvestPeriodEnd|date('d/m') }}</p>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p>Temps de pousse moyen : {{ plant.growingTime }} jours</p>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           {% if plant.supportNeed == true %}
             <p>Pour une culture dans de bonne condition, prévoir un tuteurage des plantes</p>
           {% else %}
             <p>Cette plante ne nécéssite pas de tuteurage.</p>
           {% endif %}
-        </div>
+        </li>
 
         {# affichage dynamique d'icone en fonction de la donnée entre 0 et 5 stocké #}
 
-        <div class="flex justify-between mt-5">
+        <li class="flex justify-between mt-5">
           <div>
             <p >Eau :</p>
             <div>
@@ -92,26 +92,24 @@
               {% endif %}
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </li>
+      </ul>
+    </section>
 
-    <div class="flex flex-col rounded-2xl w-[45%] min-h-[75vh] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
-      <div class="flex flex-col justify-evenly p-8">
-        <div class="text-3xl font-bold text-[#374151] pb-6">
+    <section  id="details" class="flex flex-col rounded-2xl w-[45%] min-h-[75vh] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+      <ul class="flex flex-col justify-evenly p-8">
+        <li class="text-3xl font-bold text-[#374151] pb-6">
           <h2>Détails</h2>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p class="font-bold">Détails semis</p>
           <p>{{ plant.germinationDetails }}</p>
-        </div>
-        <div class="text-lg text-[#374151]">
+        </li>
+        <li class="text-lg text-[#374151]">
           <p class="font-bold">Détails culture</p>
           <p>{{ plant.germinationDetails }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+        </li>
+      </ul>
+    </section>
+  </main>
 {% endblock %}
-
-{# name category description plant_picture sowing_period_start sowing_period_end planting_period_start planting_period_end harvest_period_start harvest_period_end germination_details cultivation_details growing_time water_need sunlight_need soil_need support_need family_slug #}

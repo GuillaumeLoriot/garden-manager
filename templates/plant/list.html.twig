@@ -5,30 +5,35 @@
 {% endblock %}
 
 {% block body %}
-  <h1 class="text-center text-6xl font-semibold text-blue-900 mt-20" >Les cultures potagère</h1>
+  <main>
+    <section>
+      <h1 class="text-center text-6xl font-semibold text-blue-900 mt-20">Les cultures potagère</h1>
 
-<div class="flex flex-wrap justify-evenly mt-6">
-  {% for plant in plants %}
-    <div class="flex flex-col rounded-2xl w-[20%] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
-      <figure class="flex justify-center items-center rounded-2xl">
-        <img src="{{ asset('images/'~ plant.plantPicture) }}" alt="vegetable picture" class="rounded-t-2xl" />
-      </figure>
+      <ul class="flex flex-wrap justify-evenly mt-6">
+        {% for plant in plants %}
+          <li class="flex flex-col rounded-2xl w-[20%] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+            <figure class="flex justify-center items-center rounded-2xl">
+              <img src="{{ asset('images/' ~ plant.plantPicture) }}" alt="Photo de la plante {{ plant.name }}" class="rounded-t-2xl" />
+            </figure>
 
-      <div class="flex flex-col p-8">
-        <div class="text-3xl font-bold text-[#374151] pb-6"><h2>{{ plant.name }}</h2></div>
-        <div class="text-lg text-[#374151]"><p>{{ plant.description }}</p></div>
-        <div class="flex justify-end pt-6">
-          <button class="bg-blue-900 text-[#ffffff] w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform"><a href="{{ path('app_plants_item', { id: plant.id }) }}">En voir plus</a></button>
-        </div>
-      </div>
-    </div>
-
-  {% else %}
-        <div class="p-6 bg-red-100 border border-red-200 rounded-lg">
-          <p class="text-red-700 text-lg font-medium">Aucune plante trouvée</p>
-        </div>
-  {% endfor %}
-</div>
+            <div class="flex flex-col p-8">
+              <div class="text-3xl font-bold text-[#374151] pb-6">
+                <h2>{{ plant.name }}</h2>
+              </div>
+              <div class="text-lg text-[#374151]">
+                <p>{{ plant.description }}</p>
+              </div>
+              <div class="flex justify-end pt-6">
+                <a href="{{ path('app_plants_item', { id: plant.id }) }}" class="bg-blue-900 text-[#ffffff] text-center w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform">En voir plus</a>
+              </div>
+            </div>
+          </li>
+        {% else %}
+          <li class="p-6 bg-red-100 border border-red-200 rounded-lg">
+            <p class="text-red-700 text-lg font-medium">Aucune plante trouvée</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
 {% endblock %}
-
-

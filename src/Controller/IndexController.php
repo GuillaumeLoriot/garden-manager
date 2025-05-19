@@ -26,6 +26,7 @@ final class IndexController extends AbstractController
         $searchForm->handleRequest($request);
 
         $foundPlants = [];
+        
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $foundPlants = $plantRepository->findBySearchBar($criteria);

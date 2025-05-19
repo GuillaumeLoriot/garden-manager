@@ -16,63 +16,68 @@ class PlantRepository extends ServiceEntityRepository
         parent::__construct($registry, Plant::class);
     }
 
-   /**
-    * @return Plant[]
-    */
+    /**
+     * @return Plant[]
+     */
 
     public function findBySearchBar($criteria): array
-{
-    $qb = $this->createQueryBuilder('p');
+    {
+        $qb = $this->createQueryBuilder('p');
 
-    if ($criteria->getCategory()) {
-        $qb->andWhere('p.category = :category')
-           ->setParameter('category', $criteria->getCategory());
+        if ($criteria->getName()) {
+            $qb->andWhere('p.name LIKE :name')
+                ->setParameter('name', '%' . $criteria->getName() . '%');
+        }
+
+        if ($criteria->getCategory()) {
+            $qb->andWhere('p.category = :category')
+                ->setParameter('category', $criteria->getCategory());
+        }
+
+        if ($criteria->getWaterNeed()) {
+            $qb->andWhere('p.waterNeed = :waterNeed')
+                ->setParameter('waterNeed', $criteria->getWaterNeed());
+        }
+
+        if ($criteria->getSunlightNeed()) {
+            $qb->andWhere('p.sunlightNeed = :sunlightNeed')
+                ->setParameter('sunlightNeed', $criteria->getSunlightNeed());
+        }
+
+        if ($criteria->getSowingPeriodSearch()) {
+            $qb->andWhere(':sowingPeriod BETWEEN p.sowingPeriodStart AND p.sowingPeriodEnd')
+                ->setParameter('sowingPeriod', $criteria->getSowingPeriodSearch());
+        }
+
+        if ($criteria->getPlantingPeriodSearch()) {
+            $qb->andWhere(':plantingPeriod BETWEEN p.plantingPeriodStart AND p.plantingPeriodEnd')
+                ->setParameter('plantingPeriod', $criteria->getPlantingPeriodSearch());
+        }
+
+        if ($criteria->getHarvestPeriodSearch()) {
+            $qb->andWhere(':harvestPeriod BETWEEN p.harvestPeriodStart AND p.harvestPeriodEnd')
+                ->setParameter('harvestPeriod', $criteria->getHarvestPeriodSearch());
+        }
+
+        return $qb->orderBy('p.name', 'ASC')
+            ->getQuery()
+            ->getResult();
     }
-
-    if ($criteria->getWaterNeed()) {
-        $qb->andWhere('p.waterNeed = :waterNeed')
-           ->setParameter('waterNeed', $criteria->getWaterNeed());
-    }
-
-    if ($criteria->getSunlightNeed()) {
-        $qb->andWhere('p.sunlightNeed = :sunlightNeed')
-           ->setParameter('sunlightNeed', $criteria->getSunlightNeed());
-    }
-
-    if ($criteria->getSowingPeriodSearch()) {
-        $qb->andWhere(':sowingPeriod BETWEEN p.sowingPeriodStart AND p.sowingPeriodEnd')
-           ->setParameter('sowingPeriod', $criteria->getSowingPeriodSearch());
-    }
-
-    if ($criteria->getPlantingPeriodSearch()) {
-        $qb->andWhere(':plantingPeriod BETWEEN p.plantingPeriodStart AND p.plantingPeriodEnd')
-           ->setParameter('plantingPeriod', $criteria->getPlantingPeriodSearch());
-    }
-
-    if ($criteria->getHarvestPeriodSearch()) {
-        $qb->andWhere(':harvestPeriod BETWEEN p.harvestPeriodStart AND p.harvestPeriodEnd')
-           ->setParameter('harvestPeriod', $criteria->getHarvestPeriodSearch());
-    }
-
-    return $qb->orderBy('p.name', 'ASC')
-              ->getQuery()
-              ->getResult();
-}
-//    public function findBySearchBar($criteria): array
+    //    public function findBySearchBar($criteria): array
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->Where('p.category = :category')
-        //    ->andWhere('p.waterNeed = :waterNeed')
-        //    ->andWhere('p.sunlightNeed = :sunlightNeed')
-        //    ->andwhere(':searchedPeriod BETWEEN p.sowingPeriodStart AND p.sowingPeriodEnd')
-        //    ->andwhere(':searchedPeriod BETWEEN p.plantingPeriodStart AND p.plantingPeriodEnd')
-        //    ->andwhere(':searchedPeriod BETWEEN p.harvestPeriodStart AND p.harvestPeriodEnd')
-        //    ->setParameter('category', $criteria->getCategory())
-        //    ->setParameter('waterNeed', $criteria->getWaterNeed())
-        //    ->setParameter('sunlightNeed', $criteria->getSunlightNeed())
-        //    ->setParameter('sowingSearchedPeriod', $criteria->getSowingPeriodSearch())
-        //    ->setParameter('plantingSearchedPeriod', $criteria->getPlantingPeriodSearch())
-        //    ->setParameter('harvestSearchedPeriod', $criteria->getHarvestPeriodSearch())
+    //    ->andWhere('p.waterNeed = :waterNeed')
+    //    ->andWhere('p.sunlightNeed = :sunlightNeed')
+    //    ->andwhere(':searchedPeriod BETWEEN p.sowingPeriodStart AND p.sowingPeriodEnd')
+    //    ->andwhere(':searchedPeriod BETWEEN p.plantingPeriodStart AND p.plantingPeriodEnd')
+    //    ->andwhere(':searchedPeriod BETWEEN p.harvestPeriodStart AND p.harvestPeriodEnd')
+    //    ->setParameter('category', $criteria->getCategory())
+    //    ->setParameter('waterNeed', $criteria->getWaterNeed())
+    //    ->setParameter('sunlightNeed', $criteria->getSunlightNeed())
+    //    ->setParameter('sowingSearchedPeriod', $criteria->getSowingPeriodSearch())
+    //    ->setParameter('plantingSearchedPeriod', $criteria->getPlantingPeriodSearch())
+    //    ->setParameter('harvestSearchedPeriod', $criteria->getHarvestPeriodSearch())
 //            ->orderBy('p.name', 'ASC')
 //            ->getQuery()
 //            ->getResult()
@@ -83,7 +88,7 @@ class PlantRepository extends ServiceEntityRepository
 
 
 
-//    public function findOneBySomeField($value): ?Plant
+    //    public function findOneBySomeField($value): ?Plant
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')

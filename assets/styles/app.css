@@ -5,3 +5,7 @@
 body {
     background-color: whitesmoke;
 }
+
+.no-year select[name$="[year]"] {
+    /* @apply hidden; */
+}
