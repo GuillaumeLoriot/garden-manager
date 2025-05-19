@@ -61,6 +61,9 @@
           </li>
         {% endfor %}
       </ul>
+      {% if found_plants is not null %}
+            <div class="text-3xl flex justify-center mt-10 mb-10 space-x-3 text-blue-900 font-semibold">{{ knp_pagination_render(found_plants) }}</div>
+    {% endif %}
     </section>
   </main>
 {% endblock %}

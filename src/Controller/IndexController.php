@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Form\SearchCriteriaType;
+use App\Helpers\Paginator;
 use App\Repository\PlantRepository;
 use App\SearchBar\SearchCriteria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class IndexController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(PlantRepository $plantRepository, Request $request): Response
+    public function index(PlantRepository $plantRepository, Request $request, Paginator $paginator): Response
     {
 
         $criteria = new SearchCriteria();
@@ -25,14 +26,14 @@ final class IndexController extends AbstractController
         ]);
         $searchForm->handleRequest($request);
 
-        $foundPlants = [];
-        
+        $foundPlants = null;
+
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            $foundPlants = $plantRepository->findBySearchBar($criteria);
-
+            $query = $plantRepository->findBySearchBar($criteria);
+            $foundPlants = $paginator->paginate($query, $request);   
         }
-
+        
 
         return $this->render('index/home.html.twig', [
             'search_form' => $searchForm,

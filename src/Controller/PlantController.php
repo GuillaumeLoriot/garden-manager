@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Plant;
+use App\Helpers\Paginator;
 use App\Repository\PlantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -12,9 +14,11 @@ final class PlantController extends AbstractController
 {
 
         #[Route('/plants', name: 'app_plants_list')]
-    public function list(PlantRepository $plantRepository): Response
+    public function list(PlantRepository $plantRepository, Request $request, Paginator $paginator): Response
     {
-        $plants = $plantRepository->findAll();
+        $query = $plantRepository->findBy([], ['name' => 'ASC']);
+
+        $plants = $paginator->paginate($query, $request);
 
         return $this->render('plant/list.html.twig', [
             'plants' => $plants
