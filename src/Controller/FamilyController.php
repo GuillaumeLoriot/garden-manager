@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Family;
-use App\Helpers\Paginator;
+use App\Service\Paginator;
 use App\Repository\FamilyRepository;
 use Doctrine\ORM\Mapping\OrderBy;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

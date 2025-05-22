@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ parent() }} - Sign-Up
+{% endblock %}
+
+{% block body %}
+  <main class="h-screen flex justify-evenly items-center">
+    <section id="profile" class="flex rounded-2xl w-[70%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+      {{form(register_form)}}
+    </section>
+  </main>
+{% endblock %}

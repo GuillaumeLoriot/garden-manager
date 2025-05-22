@@ -4,7 +4,7 @@ namespace App\Controller;
 
 
 use App\Form\SearchCriteriaType;
-use App\Helpers\Paginator;
+use App\Service\Paginator;
 use App\Repository\PlantRepository;
 use App\SearchBar\SearchCriteria;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,13 +26,25 @@ final class IndexController extends AbstractController
         ]);
         $searchForm->handleRequest($request);
 
+        
         $foundPlants = null;
-
-
+        
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $query = $plantRepository->findBySearchBar($criteria);
             $foundPlants = $paginator->paginate($query, $request);   
         }
+        // ce else if est uniquement la pour s'adapter à la manière dont paginator travail. Lorsque la recherhe est
+        //  faite la première fois, le form est submited donc ça passe bien dans la condition mais lorsque je clique sur
+        // la page 2 du paginator j'en ai compris que le paginator rechargait la page mais comme à ce moment le form 
+        // n'est plus submited, je navais plus les resultats affichés. Pour pallier à ça j'ai ajouté le elsif qui
+        // verifie si il y a un parametre "page" et si c'est le cas je fais la même chose qu'au submited.
+        // je suis conscient qu'un utilisateur pourait changer à la main dans l'url mais ce n'est pas très grave car rien
+        // ne vas en bdd ce n'est qu'une recherche simple.
+        elseif($request->query->has('page')){
+            $query = $plantRepository->findBySearchBar($criteria);
+            $foundPlants = $paginator->paginate($query, $request);
+        }
+ 
         
 
         return $this->render('index/home.html.twig', [

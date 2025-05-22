@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Plant;
-use App\Helpers\Paginator;
+use App\Service\Paginator;
 use App\Repository\PlantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

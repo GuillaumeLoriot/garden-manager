@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Family;
+use App\Entity\Image;
 use App\Entity\Plant;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -13,7 +14,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class AppFixtures extends Fixture
 {
 
- public function __construct(private UserPasswordHasherInterface $hasher) 
+
+
+ public function __construct() 
     {
     }
 
@@ -79,47 +82,79 @@ class AppFixtures extends Fixture
 
             $manager->persist($plant);
         }
-
-         // --------- USERS ----------------------------------------------------------
-
-         $faker = Factory::create('fr_FR');
+        
+        
+        
+        
+        
+        // --------- USERS ----------------------------------------------------------
+        
+        $faker = Factory::create('fr_FR');
+        $users = [];
 
         for($i=0; $i<7; $i++){
             $user = new User();
             $user
               ->setEmail($faker->email())
               ->setRoles(['ROLE_USER'])
-              ->setPassword($this->hasher->hashPassword($user, 'test'))
+              ->setPassword( 'test')
               ->setUsername($faker->userName())
-              ->setCreatedAt($faker->dateTime());
+              ->setCreatedAt($faker->dateTime())
+              ->setProfilePicture('generic-user.jpg')
+              ->setPresentation($faker->realTextBetween(400, 800));
+              
           
             $manager->persist($user);
+            $users[] = $user;
 
         }
+
         $regularUser = new User();
         $regularUser
           ->setEmail('regular@user.com')
           ->setRoles(['ROLE_USER'])
-          ->setPassword($this->hasher->hashPassword($user, 'test'))
+          ->setPassword('test')
           ->setUsername($faker->userName())
-          ->setCreatedAt($faker->dateTime());
+          ->setCreatedAt($faker->dateTime())
+          ->setProfilePicture('generic-user.jpg')
+          ->setPresentation($faker->realTextBetween(400, 800));
       
         $manager->persist($regularUser);
+        $users[] = $regularUser;
+
 
         $adminUser = new User();
         $adminUser
           ->setEmail('admin@mycorp.com')
           ->setRoles(['ROLE_ADMIN'])
-          ->setPassword($this->hasher->hashPassword($adminUser, 'admin'))
+          ->setPassword( 'admin')
           ->setUsername($faker->userName())
-          ->setCreatedAt($faker->dateTime());
-      
-        $manager->persist($adminUser);
+          ->setCreatedAt($faker->dateTime())
+          ->setProfilePicture('generic-user.jpg')
+          ->setPresentation($faker->realTextBetween(400, 800));
+          
+          $manager->persist($adminUser);
+          $users[] = $adminUser;
 
-         // --------- IMAGES -----------------------------------------
+          
+          // --------- IMAGES -----------------------------------------
+  
+  
+          // création des images
 
-
-
-        $manager->flush();
+        foreach ($users as $user) {
+            $randomNb = $faker->numberBetween(4, 7);
+            for ($i = 1; $i < $randomNb; $i++) {
+                $image = new Image();
+                $image
+                ->setFileName("generic-garden-$i.jpg")
+                ->setUser($user);
+                $manager->persist($image);
+            }
+        }
+          
+          
+          
+          $manager->flush();
     }
 }
