@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ parent() }} - Accès refusé
+{% endblock %}
+
+{% block body %}
+  <main class="h-screen flex justify-center items-center">
+    <section class="">
+      <div class="flex flex-col justify-center items-center">
+        <h1 class="text-5xl text-red-700 font-bold mb-32">Accès refusé (403)</h1>
+        <p class="text-2xl mb-32">Vous n'avez pas les permissions nécessaires pour accéder à cette page.</p>
+        <a href="{{ path('app_home') }}" class="text-white bg-blue-900 hover:bg-stone-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center w-40">Retour à l’accueil</a>
+      </div>
+    </section>
+  </main>
+{% endblock %}

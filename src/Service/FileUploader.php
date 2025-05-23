@@ -9,12 +9,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class FileUploader
 {
 
-    // private string $targetDirectory;
+
 
     public function __construct(
         private SluggerInterface $slugger,
     ) {
-        // $this->targetDirectory = $targetDirectory;
+
     }
 
     // ce service peut faire de l'upload de fichier mais dans ce projet, il ne sera utilisé que pour de l'upload d'images
@@ -42,8 +42,5 @@ class FileUploader
         return $fileName;
     }
 
-    // public function getTargetDirectory(): string
-    // {
-    //     return $this->targetDirectory;
-    // }
+
 }
