@@ -108,18 +108,20 @@ final class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('fileName')->getData();
-            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images';
+            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images/users';
 
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
             if ($imageFile) {
                 $imageFileName = $fileUploader->upload($uploadDir, $imageFile);
-                $image->setFileName($imageFileName);
+                $image->setFileName($imageFileName)
+                    ->setUser($user);
+
+                $em->persist($image);
+                $em->flush();
+            } else {
+                $form->get('fileName')->addError(new FormError("Veuillez sélectionner une image à télécharder."));
             }
 
-            $image->setUser($user);
-
-            $em->persist($image);
-            $em->flush();
         }
 
         return $this->render('user/gallery/edit.html.twig', [
@@ -145,10 +147,11 @@ final class UserController extends AbstractController
         // ici je gère le csrf token manuellement car je ne fais pas de form type mais je veux garder la même sécurité 
         $submittedToken = $request->request->get('_token');
 
-        if ($csrfTokenManager->isTokenValid(new CsrfToken('delete_image_' . $image->getId(), $submittedToken))) {
+        if ($csrfTokenManager->isTokenValid(new CsrfToken('delete_image' . $image->getId(), $submittedToken))) {
             $em->remove($image);
             $em->flush();
         }
+
         // ici je ne gèrerai pas la suppression du fichier en lui même car pour le moment, ce sont des fichiers généric 
         // stocké au même endroit pour tout mes users. Je pourrai réutiliser unlink comme dans le edit d'un user mais 
         // je devrais alors faire la gestion des uploads des emplacements des images de chaque users. 

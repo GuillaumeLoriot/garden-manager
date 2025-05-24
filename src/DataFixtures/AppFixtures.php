@@ -49,6 +49,9 @@ class AppFixtures extends Fixture
 
         // --------- PLANTS ------------------------------------------------------
         // Créer les plantes et les associer aux familles
+
+        $plants = [];
+
         foreach ($plantData as $plantItem) {
 
             $familySlug = $plantItem['family_slug'];
@@ -82,6 +85,7 @@ class AppFixtures extends Fixture
             }
 
             $manager->persist($plant);
+            $plants[] = $plant;
         }
 
 
@@ -156,13 +160,23 @@ class AppFixtures extends Fixture
 
         // --------- AREAS -----------------------------------------
 
+        $areas = [];
+
         foreach ($users as $user) {
-            $randomNb = $faker->numberBetween(2, 4);
+            $randomNb = $faker->numberBetween(3, 5);
             for ($i = 1; $i < $randomNb; $i++) {
+
+                $randomPlants = $faker->randomElements($plants, $faker->numberBetween(4, 8));
+
                 $area = new Area();
                 $area
                     ->setname("zone de culture n°$i")
                     ->setUser($user);
+
+                foreach ($randomPlants as $plant) {
+                    $area->addPlant($plant);
+                }
+
                 $manager->persist($area);
             }
         }

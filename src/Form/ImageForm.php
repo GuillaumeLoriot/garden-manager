@@ -24,7 +24,9 @@ class ImageForm extends AbstractType
                     new ImageConstraint
             ]
         ])
-        ->add('Enregistrer', SubmitType::class);
+        ->add('submit', SubmitType::class,[
+            'label' => 'Ajouter',
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

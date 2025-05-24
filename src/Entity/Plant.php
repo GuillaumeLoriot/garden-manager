@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PlantRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -91,6 +93,17 @@ class Plant
 
     #[ORM\ManyToOne(inversedBy: 'plants')]
     private ?Family $family = null;
+
+    /**
+     * @var Collection<int, Area>
+     */
+    #[ORM\ManyToMany(targetEntity: Area::class, mappedBy: 'plants')]
+    private Collection $areas;
+
+    public function __construct()
+    {
+        $this->areas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -309,6 +322,33 @@ class Plant
     public function setFamily(?Family $family): static
     {
         $this->family = $family;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Area>
+     */
+    public function getAreas(): Collection
+    {
+        return $this->areas;
+    }
+
+    public function addArea(Area $area): static
+    {
+        if (!$this->areas->contains($area)) {
+            $this->areas->add($area);
+            $area->addPlant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArea(Area $area): static
+    {
+        if ($this->areas->removeElement($area)) {
+            $area->removePlant($this);
+        }
 
         return $this;
     }

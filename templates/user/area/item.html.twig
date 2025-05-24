@@ -5,23 +5,23 @@
 {% endblock %}
 
 {% block body %}
-  <main>
-    <section>
-      <h1 class="text-center text-6xl font-semibold text-blue-900 mt-20">Détail de ma zone</h1>
+  <main class="h-screen flex justify-evenly items-start mt-20 mb-20">
+    <section class="flex flex-col rounded-2xl w-[70%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+      <h1 class="text-center text-4xl font-semibold text-blue-900 m-5">{{ area.name }}</h1>
       <ul class="flex flex-wrap justify-evenly mt-6">
-        {# {% for area in areas %}
-          <li class="flex flex-col items-center rounded-2xl w-[30%] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
-            <div class="text-3xl font-bold text-[#374151] pb-6 m-10">
-              <h2>{{ area.name }}</h2>
+        {% for plant in area.plants %}
+          <li class="flex flex-col items-center rounded-2xl w-[20%] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+            <div class="text-3xl font-bold text-[#374151] m-2">
+              <img src="{{ asset('images/' ~ plant.plantPicture) }}" alt="Photo de la plante {{ plant.name }}" class="rounded-2xl"/>
             </div>
-            <a href="" class="text-white bg-blue-900 hover:bg-stone-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 m-10 text-center w-[70%]">Voir le détail de ma zone</a>
+            <a href="{{ path('app_plants_item', { id: plant.id }) }}" class="text-white bg-blue-900 hover:bg-stone-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 m-4 text-center w-[70%]">{{ plant.name }}</a>
 
           </li>
-        {% else %} #}
+        {% else %}
           <li class="p-6 bg-red-100 border border-red-200 rounded-lg mt-32">
             <p class="text-red-700 text-lg font-medium">Aucune plantes n'est présente dans cette zone</p>
           </li>
-        {# {% endfor %} #}
+        {% endfor %}
       </ul>
     </section>
   </main>
