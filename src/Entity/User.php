@@ -10,9 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: "Cet email est déjà utilisé.")]
 #[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -55,9 +57,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Image::class, mappedBy: 'user')]
     private Collection $images;
 
+    /**
+     * @var Collection<int, Area>
+     */
+    #[ORM\OneToMany(targetEntity: Area::class, mappedBy: 'user')]
+    private Collection $areas;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->areas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,6 +231,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($image->getUser() === $this) {
                 $image->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Area>
+     */
+    public function getAreas(): Collection
+    {
+        return $this->areas;
+    }
+
+    public function addArea(Area $area): static
+    {
+        if (!$this->areas->contains($area)) {
+            $this->areas->add($area);
+            $area->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArea(Area $area): static
+    {
+        if ($this->areas->removeElement($area)) {
+            // set the owning side to null (unless already changed)
+            if ($area->getUser() === $this) {
+                $area->setUser(null);
             }
         }
 

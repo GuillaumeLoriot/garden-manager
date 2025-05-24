@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ parent() }} - {{ area.name }}
+{% endblock %}
+
+{% block body %}
+  <main>
+    <section>
+      <h1 class="text-center text-6xl font-semibold text-blue-900 mt-20">Détail de ma zone</h1>
+      <ul class="flex flex-wrap justify-evenly mt-6">
+        {# {% for area in areas %}
+          <li class="flex flex-col items-center rounded-2xl w-[30%] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+            <div class="text-3xl font-bold text-[#374151] pb-6 m-10">
+              <h2>{{ area.name }}</h2>
+            </div>
+            <a href="" class="text-white bg-blue-900 hover:bg-stone-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 m-10 text-center w-[70%]">Voir le détail de ma zone</a>
+
+          </li>
+        {% else %} #}
+          <li class="p-6 bg-red-100 border border-red-200 rounded-lg mt-32">
+            <p class="text-red-700 text-lg font-medium">Aucune plantes n'est présente dans cette zone</p>
+          </li>
+        {# {% endfor %} #}
+      </ul>
+    </section>
+  </main>
+{% endblock %}

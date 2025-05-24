@@ -4,12 +4,14 @@ namespace App\Form;
 
 use App\SearchBar\SearchCriteria;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Event\PreSubmitEvent;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SearchCriteriaType extends AbstractType
@@ -90,11 +92,37 @@ class SearchCriteriaType extends AbstractType
                 ]
             ])
 
-
             ->add('submit', SubmitType::class, [
                 'label' => 'Rechercher',
             ])
-        ;
+
+            // j'ai ajouter cete event listener car pour mes filtre, je ne suis interessé que par la periode de l'année pas l'année. 
+            // Le problème est que, au submit si je ne remplis pas l'année, ça ne fonctionne pas. 
+            // j'ai donc pensé à me brancher avant le submit pour y forcé une année fictive comme celle de ma bdd
+            ->addEventListener(FormEvents::PRE_SUBMIT, function (PreSubmitEvent $event) {
+                $data = $event->getData();
+
+                foreach (['sowingPeriodSearch', 'plantingPeriodSearch', 'harvestPeriodSearch'] as $searchField) {
+                    if (isset($data[$searchField]) && is_array($data[$searchField])) {
+                        $day = isset($data[$searchField]['day']) ? $data[$searchField]['day'] : null;
+                        $month = isset($data[$searchField]['month']) ? $data[$searchField]['month'] : null;
+                        $year = isset($data[$searchField]['year']) ? $data[$searchField]['year'] : null;
+
+
+                        // je force l'année à 2000 uniquement si day et month sont présents et qu'une donnée est dedans
+                        if (!empty($day) && !empty($month)) {
+                            $data[$searchField]['year'] = '2000';
+                        }
+                    }
+                }
+
+                $event->setData($data);
+            })
+            
+            ->getForm();
+
+            
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -25,6 +25,10 @@ class UserEditType extends AbstractType
             ->add('username', TextType::class, [
                 'required' => false,
                 'label' => 'Nom utilisateur',
+                            'attr' => [
+                'minlength' => 5,
+                'maxlength' => 50,
+            ],
             ])
             ->add('email', EmailType::class, [
                 'required' => false,
@@ -36,6 +40,10 @@ class UserEditType extends AbstractType
                 'required' => false,
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répéter le mot de passe'],
+                            'attr' => [
+                'minlength' => 4,
+                'maxlength' => 50,
+            ],
             ])
             ->add('presentation', TextareaType::class, [
                 'required' => false,

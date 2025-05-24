@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Area;
 use App\Entity\Image;
 use App\Entity\User;
 use App\Form\ImageForm;
@@ -22,6 +23,8 @@ final class UserController extends AbstractController
 {
 
 
+    // ---------------------USER---------------------------------------------------------------------
+
 
     #[Route('/user/{id}', name: 'app_user_profile')]
     public function profile(User $user): Response
@@ -29,8 +32,9 @@ final class UserController extends AbstractController
         // ici je verifie que c'est le bon user qui cherche à acceder à cette route 
         if ($user !== $this->getUser()) {
             $this->redirectToRoute('app_error_403');
-            // ici, je souhaitais juste afficher une page plus sympa que le throw en dessous
-            
+            // ici, je souhaitais juste afficher une page plus sympa que le throw en dessous pour tester. j'ai laisser 
+            // les erreurs symphony normales 404, 403 dans le reste du projet.
+            // je laisse les 2 ici pour que tu puisse switcher si tu veux tester.
             // throw $this->createAccessDeniedException();
         }
         return $this->render('user/profile.html.twig', ['user' => $user]);
@@ -43,6 +47,7 @@ final class UserController extends AbstractController
 
         if ($user !== $this->getUser()) {
 
+            // VOIR commentaire dans profile
             $this->redirectToRoute('app_error_403');
             // throw $this->createAccessDeniedException();
         }
@@ -57,10 +62,11 @@ final class UserController extends AbstractController
             $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images/users';
 
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
-            if (!$ProfilePictureFile) {
-                $user->setProfilePicture('generic-user.jpg');
+            if ($ProfilePictureFile) {
+                $ProfilePictureFileName = $fileUploader->upload($uploadDir, $ProfilePictureFile);
+                $user->setProfilePicture($ProfilePictureFileName);
             }
-            $ProfilePictureFileName = $fileUploader->upload($uploadDir, $ProfilePictureFile);
+
             try {
                 // Ici, nettoyage avant de modifier le nom du fichier
                 if ($user->getProfilePicture() !== null) {
@@ -70,11 +76,9 @@ final class UserController extends AbstractController
 
                 $editForm->addError(new FormError("Impossible de supprimer l'ancienne photo."));
             }
-            $user->setProfilePicture($ProfilePictureFileName);
-            $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', "Votre profil a bin été mis à jour");
+            $this->addFlash('success', "Votre profil a bien été mis à jour");
 
             $this->redirectToRoute('app_user_profile', ['id' => $user->getId()]);
         }
@@ -83,35 +87,10 @@ final class UserController extends AbstractController
     }
 
 
-    #[Route('/register', name: 'app_register')]
-    public function register(EntityManagerInterface $em, Request $request, FileUploader $fileUploader): Response
-    {
-        $user = new User();
-        $editForm = $this->createForm(UserRegistrationType::class, $user);
 
-        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+    // ---------------------USER/GALLERY---------------------------------------------------------------------
 
-            $ProfilePictureFile = $editForm->get('profilePicture')->getData();
-            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images/users';
-
-            /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
-            if (!$ProfilePictureFile) {
-                $user->setProfilePicture('generic-user.jpg');
-            }
-            $ProfilePictureFileName = $fileUploader->upload($uploadDir, $ProfilePictureFile);
-            $user->setProfilePicture($ProfilePictureFileName);
-            $em->persist($user);
-            $em->flush();
-
-            $this->addFlash('success', "Merci de votre insciption, vous pouvez maintenant vous connecter");
-
-            return $this->redirectToRoute('app_home');
-        }
-
-        return $this->render('user/register.html.twig', ['register_form' => $editForm]);
-    }
 
 
 
@@ -155,9 +134,11 @@ final class UserController extends AbstractController
     {
         $user = $this->getUser();
 
-
+        // VOIR commentaire dans profile
         if ($image->getUser() !== $user) {
             $this->redirectToRoute('app_error_403');
+
+            // throw $this->createAccessDeniedException();
         }
 
 
@@ -180,5 +161,82 @@ final class UserController extends AbstractController
     }
 
 
+
+    // ---------------------USER/AREA---------------------------------------------------------------------
+
+
+
+
+    #[Route('/user/area/list', name: 'app_user_area_list')]
+    public function areaList(): Response
+    {
+
+        $user = $this->getUser();
+        // ici je verifie que c'est le bon user qui cherche à acceder à cette route 
+        if ($user !== $this->getUser()) {
+            throw $this->createAccessDeniedException();
+        }
+
+
+        $areas = $user->getAreas();
+
+
+        return $this->render('user/area/list.html.twig', ['areas' => $areas]);
+    }
+
+
+    #[Route('/user/area/{id}', name: 'app_user_area_detail')]
+    public function areaDetail(Area $area): Response
+    {
+        $user = $this->getUser();
+
+        // ici je vérifie que cette zone appartient bien à l'utilisateur connecté
+        if ($area->getUser() !== $user) {
+            throw $this->createAccessDeniedException("Vous ne pouvez pas accéder à cette zone.");
+        }
+
+        return $this->render('user/area/item.html.twig', [
+            'area' => $area
+        ]);
+    }
+
+
+
+
+
+    // ---------------------REGISTER---------------------------------------------------------------------
+
+
+
+    #[Route('/register', name: 'app_register')]
+    public function register(EntityManagerInterface $em, Request $request, FileUploader $fileUploader): Response
+    {
+        $user = new User();
+        $registerForm = $this->createForm(UserRegistrationType::class, $user);
+
+        $registerForm->handleRequest($request);
+
+        if ($registerForm->isSubmitted() && $registerForm->isValid()) {
+
+            $ProfilePictureFile = $registerForm->get('profilePicture')->getData();
+            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images/users';
+
+            /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
+            if ($ProfilePictureFile) {
+                $ProfilePictureFileName = $fileUploader->upload($uploadDir, $ProfilePictureFile);
+                $user->setProfilePicture($ProfilePictureFileName);
+            } else {
+                $user->setProfilePicture('generic-user.jpg');
+            }
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('success', "Merci de votre insciption, vous pouvez maintenant vous connecter");
+
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('user/register.html.twig', ['register_form' => $registerForm]);
+    }
 
 }

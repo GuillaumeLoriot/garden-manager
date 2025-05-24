@@ -22,9 +22,15 @@ class UserRegistrationType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'required' => true,
+                'invalid_message' => 'le username doit être compris entre 5 et 50 charactères',
                 'label' => 'Nom utilisateur',
+                            'attr' => [
+                'minlength' => 5,
+                'maxlength' => 50,
+            ],
             ])
             ->add('email', EmailType::class, [
+                'invalid_message' => 'Email invalid',
                 'required' => true,
             ])
             ->add('password', RepeatedType::class, [
@@ -34,6 +40,10 @@ class UserRegistrationType extends AbstractType
                 'required' => true,
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répéter le mot de passe'],
+                            'attr' => [
+                'minlength' => 4,
+                'maxlength' => 50,
+            ],
             ])
             ->add('presentation', TextareaType::class, [
                 'required' => false,

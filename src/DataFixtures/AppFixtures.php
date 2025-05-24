@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Area;
 use App\Entity\Family;
 use App\Entity\Image;
 use App\Entity\Plant;
@@ -16,7 +17,7 @@ class AppFixtures extends Fixture
 
 
 
- public function __construct() 
+    public function __construct()
     {
     }
 
@@ -24,9 +25,9 @@ class AppFixtures extends Fixture
     {
 
         // j'importe mes données en json et les décode pour travailler avec un tableau associatif
-        $familyData = json_decode(file_get_contents(__DIR__.'/data/family_data.json'), true);
-        $plantData = json_decode(file_get_contents(__DIR__.'/data/plant_data.json'), true);
-        
+        $familyData = json_decode(file_get_contents(__DIR__ . '/data/family_data.json'), true);
+        $plantData = json_decode(file_get_contents(__DIR__ . '/data/plant_data.json'), true);
+
 
         // --------- FAMILIES --------------------------------------------------
         $families = [];
@@ -71,39 +72,39 @@ class AppFixtures extends Fixture
                 ->setSunlightNeed($plantItem['sunlight_need'])
                 ->setSoilNeed($plantItem['soil_need'])
                 ->setSupportNeed($plantItem['support_need']);
-            
+
 
 
             // j'associe la famille à la plante via le slug. ce slug est unique et me permet de charger 
             // les donnée sans me soucier des id qui change à chaque load des fixtures.
             if (isset($families[$familySlug])) {
-                    $plant->setFamily($families[$familySlug]);
+                $plant->setFamily($families[$familySlug]);
             }
 
             $manager->persist($plant);
         }
-        
-        
-        
-        
-        
+
+
+
+
+
         // --------- USERS ----------------------------------------------------------
-        
+
         $faker = Factory::create('fr_FR');
         $users = [];
 
-        for($i=0; $i<7; $i++){
+        for ($i = 0; $i < 7; $i++) {
             $user = new User();
             $user
-              ->setEmail($faker->email())
-              ->setRoles(['ROLE_USER'])
-              ->setPassword( 'test')
-              ->setUsername($faker->userName())
-              ->setCreatedAt($faker->dateTime())
-              ->setProfilePicture('generic-user.jpg')
-              ->setPresentation($faker->realTextBetween(400, 800));
-              
-          
+                ->setEmail($faker->email())
+                ->setRoles(['ROLE_USER'])
+                ->setPassword('test')
+                ->setUsername($faker->userName())
+                ->setCreatedAt($faker->dateTime())
+                ->setProfilePicture('generic-user.jpg')
+                ->setPresentation($faker->realTextBetween(400, 800));
+
+
             $manager->persist($user);
             $users[] = $user;
 
@@ -111,50 +112,61 @@ class AppFixtures extends Fixture
 
         $regularUser = new User();
         $regularUser
-          ->setEmail('regular@user.com')
-          ->setRoles(['ROLE_USER'])
-          ->setPassword('test')
-          ->setUsername($faker->userName())
-          ->setCreatedAt($faker->dateTime())
-          ->setProfilePicture('generic-user.jpg')
-          ->setPresentation($faker->realTextBetween(400, 800));
-      
+            ->setEmail('regular@user.com')
+            ->setRoles(['ROLE_USER'])
+            ->setPassword('test')
+            ->setUsername($faker->userName())
+            ->setCreatedAt($faker->dateTime())
+            ->setProfilePicture('generic-user.jpg')
+            ->setPresentation($faker->realTextBetween(400, 800));
+
         $manager->persist($regularUser);
         $users[] = $regularUser;
 
 
         $adminUser = new User();
         $adminUser
-          ->setEmail('admin@mycorp.com')
-          ->setRoles(['ROLE_ADMIN'])
-          ->setPassword( 'admin')
-          ->setUsername($faker->userName())
-          ->setCreatedAt($faker->dateTime())
-          ->setProfilePicture('generic-user.jpg')
-          ->setPresentation($faker->realTextBetween(400, 800));
-          
-          $manager->persist($adminUser);
-          $users[] = $adminUser;
+            ->setEmail('admin@mycorp.com')
+            ->setRoles(['ROLE_ADMIN'])
+            ->setPassword('admin')
+            ->setUsername($faker->userName())
+            ->setCreatedAt($faker->dateTime())
+            ->setProfilePicture('generic-user.jpg')
+            ->setPresentation($faker->realTextBetween(400, 800));
 
-          
-          // --------- IMAGES -----------------------------------------
-  
-  
-          // création des images
+        $manager->persist($adminUser);
+        $users[] = $adminUser;
+
+
+        // --------- IMAGES -----------------------------------------
+
+
+        // création des images
 
         foreach ($users as $user) {
             $randomNb = $faker->numberBetween(4, 7);
             for ($i = 1; $i < $randomNb; $i++) {
                 $image = new Image();
                 $image
-                ->setFileName("generic-garden-$i.jpg")
-                ->setUser($user);
+                    ->setFileName("generic-garden-$i.jpg")
+                    ->setUser($user);
                 $manager->persist($image);
             }
         }
-          
-          
-          
-          $manager->flush();
+
+        // --------- AREAS -----------------------------------------
+
+        foreach ($users as $user) {
+            $randomNb = $faker->numberBetween(2, 4);
+            for ($i = 1; $i < $randomNb; $i++) {
+                $area = new Area();
+                $area
+                    ->setname("zone de culture n°$i")
+                    ->setUser($user);
+                $manager->persist($area);
+            }
+        }
+
+        $manager->flush();
     }
 }

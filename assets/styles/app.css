@@ -7,5 +7,5 @@ body {
 }
 
 .no-year select[name$="[year]"] {
-    /* @apply hidden; */
+    @apply hidden;
 }

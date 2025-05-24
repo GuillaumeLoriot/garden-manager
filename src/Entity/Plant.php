@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PlantRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PlantRepository::class)]
 class Plant
@@ -15,15 +16,18 @@ class Plant
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(min: 5, max: 255, minMessage: "Trop court.", maxMessage: "Trop long.")]
     private ?string $name = null;
 
     #[ORM\Column(length: 40)]
+    #[Assert\Length(min: 3, max: 40, minMessage: "Trop court.", maxMessage: "Trop long.")]
     private ?string $category = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(min: 3, max: 255, minMessage: "Trop court.", maxMessage: "Trop long.")]
     private ?string $plantPicture = null;
 
     // Représente le début de la période de semis, exprimée avec une date dans une année fictive (année 2000).
@@ -32,27 +36,33 @@ class Plant
     // Exemple : "2000-03-01" signifie "1er mars de chaque année".
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $sowingPeriodStart = null;
  
     // Représente la fin de la période de semis.
     // Idem : l’année est arbitraire, seule la période dans l’année est pertinente.
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $sowingPeriodEnd = null;
 
     // voir commentaires précédents
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $plantingPeriodStart = null;
 
     // voir commentaires précédents
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $plantingPeriodEnd = null;
 
     // voir commentaires précédents
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $harvestPeriodStart = null;
 
     // voir commentaires précédents
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $harvestPeriodEnd = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -62,12 +72,15 @@ class Plant
     private ?string $cultivationDetails = null;
 
     #[ORM\Column]
+    #[Assert\Range(min: 1, max: 365, notInRangeMessage: "Doit être compris entre {{ min }} et {{ max }}.")]
     private ?int $growingTime = null;
 
     #[ORM\Column]
+    #[Assert\Range(min: 0, max: 5, notInRangeMessage: "Doit être compris entre {{ min }} et {{ max }}.")]
     private ?int $waterNeed = null;
 
     #[ORM\Column]
+    #[Assert\Range(min: 0, max: 5, notInRangeMessage: "Doit être compris entre {{ min }} et {{ max }}.")]
     private ?int $sunlightNeed = null;
 
     #[ORM\Column(type: Types::TEXT)]

@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Garden-M{% endblock %}</title>
-        <link rel="icon" href="{{ asset('images/logo.png') }}">
-        {% block stylesheets %}
-        {% endblock %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        Garden-M
+      {% endblock %}
+    </title>
+    <link rel="icon" href="{{ asset('images/logo.png') }}" />
+    {% block stylesheets %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
+    {% endblock %}
+
+    {% block javascripts %}
+      {% block importmap %}
+        {{ importmap('app') }}
+      {% endblock %}
+    {% endblock %}
+  </head>
+  <body>
     <header>{{ include('nav.html.twig') }}</header>
-        {% block body %}{% endblock %}
-    </body>
+    {% for message in app.flashes('success') %}
+      <div class="bg-green-600 px-6 py-4 text-white">{{ message }}</div>
+    {% endfor %}
+
+    {% block body %}
+    {% endblock %}
+  </body>
 </html>
