@@ -59,7 +59,7 @@ final class UserController extends AbstractController
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
             $ProfilePictureFile = $editForm->get('profilePicture')->getData();
-            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images/users';
+            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/images/uploads/user';
 
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
             if ($ProfilePictureFile) {
@@ -70,7 +70,7 @@ final class UserController extends AbstractController
             try {
                 // Ici, nettoyage avant de modifier le nom du fichier
                 if ($user->getProfilePicture() !== null) {
-                    unlink(__DIR__ . "/../../public/uploads/images/users/" . $user->getProfilePicture());
+                    unlink(__DIR__ . "/../../public/images/uploads/user/" . $user->getProfilePicture());
                 }
             } catch (\Exception $e) {
 
@@ -108,7 +108,7 @@ final class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('fileName')->getData();
-            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images/users';
+            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/images/uploads/users';
 
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
             if ($imageFile) {
@@ -154,8 +154,12 @@ final class UserController extends AbstractController
 
         // ici je ne gèrerai pas la suppression du fichier en lui même car pour le moment, ce sont des fichiers généric 
         // stocké au même endroit pour tout mes users. Je pourrai réutiliser unlink comme dans le edit d'un user mais 
-        // je devrais alors faire la gestion des uploads des emplacements des images de chaque users. 
+        // je devrais alors faire la gestion des uploads des emplacements des images de chaque users. pour le moment, 
+        // les templates rendent les images de public/images/default et les uploads se font vers public/images/uploads/users
+        // mais je dois encore gérer l'affichage dynamique en fonction de où est stocké l'image 
+        // ce qui me permettra de gitter uniquement le dossier default.
         // j'aurais préféré le faire, mais je ne pense pas en avoir le temps
+
 
         $em->remove($image);
         $em->flush();

@@ -40,6 +40,9 @@ class Family
     #[ORM\OneToMany(targetEntity: Plant::class, mappedBy: 'family')]
     private Collection $plants;
 
+    #[ORM\Column(length: 255)]
+    private ?string $familyPicture = null;
+
     public function __construct()
     {
         $this->plants = new ArrayCollection();
@@ -151,4 +154,21 @@ class Family
 
         return $this;
     }
+
+    public function getFamilyPicture(): ?string
+    {
+        return $this->familyPicture;
+    }
+
+    public function setFamilyPicture(string $familyPicture): static
+    {
+        $this->familyPicture = $familyPicture;
+
+        return $this;
+    }
+
+    public function __toString()
+  {
+    return $this->name;
+  }
 }

@@ -9,7 +9,7 @@
     <section id="profile" class="flex justify-center">
     <div class="flex rounded-2xl w-[70%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow mt-24">
       <div class="flex flex-col justify-around rounded-2xl w-[30%]">
-        <img src="{{ asset('uploads/images/users/' ~ user.profilePicture) }}" alt="Photo de l'utilisateur {{ user.profilePicture }}" class="rounded-2xl ml-5 mt-5" />
+        <img src="{{ asset('images/default/' ~ user.profilePicture) }}" alt="Photo de l'utilisateur {{ user.profilePicture }}" class="rounded-2xl ml-5 mt-5" />
         <a href="{{ path('app_user_edit', { id: user.id }) }}" class="bg-blue-900 text-[#ffffff] text-center w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform ml-5">Modifier le profil</a>
       </div>
 

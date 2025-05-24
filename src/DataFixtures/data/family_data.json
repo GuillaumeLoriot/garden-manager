@@ -1,207 +1,227 @@
 [
-    {
-      "name": "Apiacées",
-      "description": "Les Apiacées sont une famille de plantes à fleurs, bien connue pour ses espèces cultivées pour leurs racines comestibles (comme la carotte) et ses herbes aromatiques (comme le céleri et le persil). Elles sont présentes dans des régions tempérées et tropicales.",
-      "characteristics": "Plantes généralement herbacées, avec des feuilles souvent composées et disposées en rosette. Les fleurs sont petites, souvent groupées en ombelles. Les fruits sont des akènes.",
-      "history": "Les Apiacées sont largement cultivées depuis l'Antiquité, notamment pour leurs racines et feuilles comestibles. Certaines espèces ont été utilisées à des fins médicinales et aromatiques.",
-      "main_use": "alimentaire, médicinal, aromatique",
-      "slug": "apiaceae"
-    },
-    {
-      "name": "Brassicacées",
-      "description": "La famille des Brassicacées (ou Crucifères) regroupe des plantes largement cultivées pour leurs légumes-feuilles, racines et graines. Elle inclut des plantes comme le chou, la moutarde, le navet et le radis.",
-      "characteristics": "Plantes herbacées avec des fleurs disposées en forme de croix (quatre pétales). Les fruits sont des siliques ou des gousses contenant des graines.",
-      "history": "Les Brassicacées ont une longue histoire de domestication, notamment pour leurs racines comestibles et leurs feuilles. Elles ont été cultivées depuis des siècles pour leur apport nutritionnel.",
-      "main_use": "alimentaire, médicinal",
-      "slug": "brassicaceae"
-    },
-    {
-      "name": "Amaryllidacées",
-      "description": "Les Amaryllidacées sont une famille de plantes à fleurs, comprenant de nombreuses espèces cultivées pour leurs fleurs décoratives et parfois comestibles (comme l'ail et l'oignon).",
-      "characteristics": "Plantes herbacées, souvent bulbeuses, avec de grandes fleurs en forme de trompette. Les feuilles sont généralement longues et lancéolées.",
-      "history": "Originaire principalement des régions tempérées et subtropicales, cette famille a été cultivée pour ses propriétés médicinales et alimentaires depuis des siècles.",
-      "main_use": "alimentaire, ornemental, médicinal",
-      "slug": "amaryllidaceae"
-    },
-    {
-      "name": "Solanacées",
-      "description": "Les Solanacées sont une famille botanique très diversifiée comprenant environ 2 700 espèces réparties dans une centaine de genres. Elles sont répandues dans le monde entier, particulièrement dans les régions tropicales et subtropicales.",
-      "characteristics": "Plantes à fleurs avec feuilles généralement simples et alternes. Fleurs à symétrie radiale, souvent composées de cinq pétales soudés. Les fruits sont principalement des baies ou des capsules.",
-      "history": "La famille des Solanacées trouve son origine principalement en Amérique du Sud, qui est considérée comme le centre de diversification et de domestication de nombreuses espèces.",
-      "main_use": "alimentaire, médicinal, ornemental",
-      "slug": "solanaceae"
-    },
-    {
-      "name": "Cucurbitacées",
-      "description": "Les Cucurbitacées sont une famille de plantes principalement composées de cucurbitacées comestibles, telles que le concombre, la courge, la pastèque et le melon.",
-      "characteristics": "Plantes grimpantes ou rampantes, avec des feuilles généralement larges et des fruits charnus (souvent en forme de baie).",
-      "history": "Les Cucurbitacées sont cultivées depuis l'Antiquité pour leurs fruits comestibles. Elles sont originaires de régions tropicales et subtropicales.",
-      "main_use": "alimentaire, ornemental",
-      "slug": "cucurbitaceae"
-    },
-    {
-      "name": "Fabacées",
-      "description": "Les Fabacées, ou légumineuses, sont une famille de plantes qui comprend des plantes cultivées pour leurs graines riches en protéines, comme le haricot, le pois et le soja.",
-      "characteristics": "Plantes herbacées, arbustes ou petits arbres, souvent avec des feuilles composées et des fleurs en forme de papillon.",
-      "history": "Les Fabacées ont été cultivées depuis l'Antiquité pour leurs graines comestibles. Elles sont également utilisées pour améliorer la fertilité des sols en raison de leur capacité à fixer l'azote.",
-      "main_use": "alimentaire, fourrager, médicinal",
-      "slug": "fabaceae"
-    },
-    {
-      "name": "Astéracées",
-      "description": "Les Astéracées sont une des familles les plus grandes de plantes à fleurs, comprenant des espèces cultivées pour leurs fleurs décoratives ou utilisées comme herbes médicinales.",
-      "characteristics": "Plantes herbacées ou ligneuses avec des fleurs souvent groupées en capitules. Les fruits sont des akènes.",
-      "history": "Cette famille regroupe des plantes utilisées depuis l'Antiquité pour leurs vertus médicinales. Elle est également importante pour ses usages ornementaux.",
-      "main_use": "alimentaire, ornemental, médicinal",
-      "slug": "asteraceae"
-    },
-    {
-      "name": "Polygonacées",
-      "description": "Les Polygonacées sont une famille de plantes qui comprend des espèces alimentaires et ornementales, telles que le sarrasin et la rhubarbe.",
-      "characteristics": "Plantes herbacées ou ligneuses, souvent avec des feuilles alternes et des tiges creuses. Les fruits sont généralement des akènes ou des noix.",
-      "history": "Les Polygonacées sont cultivées depuis des siècles, notamment pour leurs graines (comme le sarrasin) et leurs tiges comestibles (comme la rhubarbe).",
-      "main_use": "alimentaire, ornemental",
-      "slug": "polygonaceae"
-    },
-    {
-      "name": "Rosacées",
-      "description": "Les Rosacées sont une famille de plantes qui inclut de nombreuses espèces cultivées pour leurs fruits comestibles ou pour leur beauté, comme les pommes, les poires et les fraises.",
-      "characteristics": "Plantes souvent épineuses, avec des fleurs généralement actinomorphes et des fruits charnus ou secs.",
-      "history": "Les Rosacées ont été cultivées dès l'Antiquité, principalement en Asie et en Europe. Certaines sont cultivées pour leurs propriétés médicinales et ornementales.",
-      "main_use": "alimentaire, ornemental, médicinal",
-      "slug": "rosaceae"
-    },
-    {
-      "name": "Vitacées",
-      "description": "Les Vitacées sont une famille composée principalement de vignes, cultivées pour leurs fruits comme le raisin.",
-      "characteristics": "Plantes grimpantes, souvent avec des feuilles simples et des grappes de fleurs petites et discrètes.",
-      "history": "Les Vitacées sont cultivées depuis l'Antiquité, principalement pour la production de raisin à des fins alimentaires et vinicoles.",
-      "main_use": "alimentaire, médicinal",
-      "slug": "vitaceae"
-    },
-    {
-      "name": "Rutacées",
-      "description": "Les Rutacées sont une famille de plantes comprenant des agrumes comme les oranges, les citrons et les pamplemousses.",
-      "characteristics": "Plantes souvent arbustives ou ligneuses, avec des feuilles souvent aromatiques et des fleurs à pétales généralement cinq.",
-      "history": "Les Rutacées, originaires des régions subtropicales et tropicales, sont cultivées principalement pour leurs fruits riches en vitamine C.",
-      "main_use": "alimentaire, médicinal, ornemental",
-      "slug": "rutaceae"
-    },
-    {
-      "name": "Actinidiacées",
-      "description": "Les Actinidiacées comprennent des plantes comme le kiwi, cultivées pour leurs fruits comestibles et leur valeur nutritionnelle.",
-      "characteristics": "Plantes grimpantes avec des feuilles alternes. Les fleurs sont petites et souvent solitaires.",
-      "history": "Originaire de Chine, l'actinidia a été cultivée et distribuée à l'international pour ses fruits riches en vitamine C.",
-      "main_use": "alimentaire, ornemental",
-      "slug": "actinidiaceae"
-    },
-    {
-      "name": "Fagacées",
-      "description": "Les Fagacées sont une famille de plantes ligneuses comprenant des chênes, des hêtres et des châtaigniers.",
-      "characteristics": "Arbres ou arbustes, souvent à feuilles caduques. Les fruits sont des glands ou des fruits secs.",
-      "history": "Les Fagacées sont des arbres emblématiques des forêts tempérées, utilisés depuis des millénaires pour leur bois et leurs fruits.",
-      "main_use": "alimentaire, ornemental",
-      "slug": "fagaceae"
-    },
-    {
-      "name": "Juglandacées",
-      "description": "La famille des Juglandacées comprend des arbres cultivés pour leurs noix, telles que la noix de Grenoble et la noix de pécan.",
-      "characteristics": "Arbres feuillus, souvent à grandes feuilles composées et à fruits en coques dures.",
-      "history": "Les Juglandacées ont été cultivées pour leurs noix, appréciées depuis l'Antiquité pour leur richesse en graisses et nutriments.",
-      "main_use": "alimentaire",
-      "slug": "juglandaceae"
-    },
-    {
-      "name": "Éricacées",
-      "description": "Les Éricacées sont une famille qui comprend des plantes souvent acidophiles, cultivées pour leurs fleurs et fruits comme les myrtilles et les airelles.",
-      "characteristics": "Plantes ligneuses ou herbacées, souvent avec des feuilles persistantes et des fleurs en forme de cloche.",
-      "history": "Les Éricacées sont cultivées dans les régions acides, principalement pour leurs fruits comestibles et leurs usages ornementaux.",
-      "main_use": "alimentaire, ornemental",
-      "slug": "ericaceae"
-    },
-    {
-      "name": "Moracées",
-      "description": "Les Moracées sont une famille de plantes comprenant des espèces comme le figuier et le mûrier.",
-      "characteristics": "Arbres ou arbustes, souvent à feuilles larges et dentées, avec des fruits comestibles ou ornementaux.",
-      "history": "Les Moracées ont été cultivées depuis l'Antiquité, principalement pour leurs fruits comestibles et leur bois.",
-      "main_use": "alimentaire, ornemental",
-      "slug": "moraceae"
-    },
-    {
-      "name": "Rhamnacées",
-      "description": "Les Rhamnacées sont une famille de plantes comprenant des arbustes et des arbres, souvent épineux, avec des feuilles simples et des fruits variés.",
-      "characteristics": "Arbustes ou arbres, souvent à feuilles simples et alternes, avec des fleurs petites et des fruits diversifiés.",
-      "history": "Cette famille est répandue dans les régions tempérées et tropicales, avec des usages médicinaux et ornementaux.",
-      "main_use": "médicinal, ornemental",
-      "slug": "rhamnaceae"
-    },
-    {
-      "name": "Grossulariacées",
-      "description": "Les Grossulariacées comprennent des arbustes comme les groseilliers, cultivés pour leurs petits fruits acidulés.",
-      "characteristics": "Arbustes à feuilles simples et lobées, avec des fleurs en grappes et des baies comestibles.",
-      "history": "Originaires des régions tempérées, ces plantes sont cultivées depuis longtemps pour leurs fruits.",
-      "main_use": "alimentaire",
-      "slug": "grossulariaceae"
-
-    },
-    {
-      "name": "Cornacées",
-      "description": "Les Cornacées regroupent des arbres et des arbustes, notamment les cornouillers, connus pour leurs fleurs décoratives.",
-      "characteristics": "Arbres ou arbustes à feuilles simples, avec des inflorescences en cymes et des fruits drupacés.",
-      "history": "Présentes dans les régions tempérées, ces plantes sont utilisées en ornementation et parfois pour leurs fruits.",
-      "main_use": "ornemental, alimentaire",
-      "slug": "cornaceae"
-    },
-    {
-      "name": "Lamiacées",
-      "description": "Les Lamiacées sont une grande famille de plantes herbacées ou arbustives, incluant de nombreuses herbes aromatiques.",
-      "characteristics": "Plantes à tiges carrées, feuilles opposées, et fleurs bilabiées, souvent très aromatiques.",
-      "history": "Cultivées depuis l'Antiquité pour leurs propriétés culinaires et médicinales, elles sont répandues mondialement.",
-      "main_use": "alimentaire, médicinal, ornemental",
-      "slug": "lamiaceae"
-    },
-    {
-      "name": "Lauracées",
-      "description": "Les Lauracées sont une famille de plantes ligneuses, comprenant des arbres et des arbustes, souvent aromatiques.",
-      "characteristics": "Arbres ou arbustes à feuilles persistantes, avec des fleurs discrètes et des fruits en drupes.",
-      "history": "Principalement tropicales, certaines espèces comme le laurier sont utilisées en cuisine et en parfumerie.",
-      "main_use": "alimentaire, médicinal, ornemental",
-      "slug": "lauraceae"
-    },
-    {
-      "name": "Betulacées",
-      "description": "Les Betulacées sont une famille de plantes ligneuses comprenant des arbres et des arbustes caducs, tels que les bouleaux, les aulnes et les noisetiers, caractérisés par leurs feuilles simples et leurs chatons pendants.",
-      "characteristics": "Arbres ou arbustes à feuilles simples, alternes, souvent dentées, avec des inflorescences en chatons unisexués apparaissant avant ou en même temps que les feuilles.",
-      "history": "Originaires principalement de l'hémisphère nord, les Betulacées sont présentes dans les régions tempérées et ont une longue histoire d'utilisation pour leur bois et leurs fruits.",
-      "main_use": "bois, alimentaire, ornemental",
-      "slug": "betulaceae"
-    },
-    {
-      "name": "Tiliacées",
-      "description": "Les Tiliacées regroupent principalement des arbres et des arbustes, comme les tilleuls, connus pour leurs grandes feuilles en forme de cœur et leurs fleurs parfumées.",
-      "characteristics": "Plantes ligneuses à feuilles simples, alternes, souvent dentées, avec des inflorescences en cymes et des fleurs généralement hermaphrodites.",
-      "history": "Principalement tropicales, certaines espèces comme le tilleul sont utilisées en médecine traditionnelle et en ornementation.",
-      "main_use": "médicinal, ornemental",
-      "slug": "tiliaceae"
-    },
-    {
-      "name": "Valérianacées",
-      "description": "Les Valérianacées sont une famille de plantes herbacées, souvent odorantes, comprenant des espèces utilisées en phytothérapie pour leurs propriétés sédatives.",
-      "characteristics": "Plantes herbacées à feuilles opposées, simples ou composées, avec des inflorescences en cymes et des fleurs souvent parfumées.",
-      "history": "Réparties dans les régions tempérées, ces plantes sont cultivées pour leurs usages médicinaux et ornementaux.",
-      "main_use": "médicinal, ornemental",
-      "slug": "valerianaceae"
-    },
-    {
-      "name": "Amaranthacées",
-      "description": "Les Amaranthacées sont une famille cosmopolite de plantes herbacées ou arbustives, incluant des espèces alimentaires, médicinales et ornementales.",
-      "characteristics": "Plantes à feuilles simples, alternes ou opposées, sans stipules, avec des fleurs petites, souvent regroupées en inflorescences denses.",
-      "history": "Présentes dans le monde entier, certaines espèces comme l'amarante et le quinoa sont cultivées depuis l'Antiquité pour leurs graines nutritives.",
-      "main_use": "alimentaire, médicinal, ornemental",
-      "slug": "amaranthaceae"
-    }  
-  ]
-  
-
-
-
+  {
+    "name": "Apiacées",
+    "description": "Les Apiacées sont une famille de plantes à fleurs, bien connue pour ses espèces cultivées pour leurs racines comestibles (comme la carotte) et ses herbes aromatiques (comme le céleri et le persil). Elles sont présentes dans des régions tempérées et tropicales.",
+    "characteristics": "Plantes généralement herbacées, avec des feuilles souvent composées et disposées en rosette. Les fleurs sont petites, souvent groupées en ombelles. Les fruits sont des akènes.",
+    "history": "Les Apiacées sont largement cultivées depuis l'Antiquité, notamment pour leurs racines et feuilles comestibles. Certaines espèces ont été utilisées à des fins médicinales et aromatiques.",
+    "main_use": "alimentaire, médicinal, aromatique",
+    "slug": "apiaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Brassicacées",
+    "description": "La famille des Brassicacées (ou Crucifères) regroupe des plantes largement cultivées pour leurs légumes-feuilles, racines et graines. Elle inclut des plantes comme le chou, la moutarde, le navet et le radis.",
+    "characteristics": "Plantes herbacées avec des fleurs disposées en forme de croix (quatre pétales). Les fruits sont des siliques ou des gousses contenant des graines.",
+    "history": "Les Brassicacées ont une longue histoire de domestication, notamment pour leurs racines comestibles et leurs feuilles. Elles ont été cultivées depuis des siècles pour leur apport nutritionnel.",
+    "main_use": "alimentaire, médicinal",
+    "slug": "brassicaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Amaryllidacées",
+    "description": "Les Amaryllidacées sont une famille de plantes à fleurs, comprenant de nombreuses espèces cultivées pour leurs fleurs décoratives et parfois comestibles (comme l'ail et l'oignon).",
+    "characteristics": "Plantes herbacées, souvent bulbeuses, avec de grandes fleurs en forme de trompette. Les feuilles sont généralement longues et lancéolées.",
+    "history": "Originaire principalement des régions tempérées et subtropicales, cette famille a été cultivée pour ses propriétés médicinales et alimentaires depuis des siècles.",
+    "main_use": "alimentaire, ornemental, médicinal",
+    "slug": "amaryllidaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Solanacées",
+    "description": "Les Solanacées sont une famille botanique très diversifiée comprenant environ 2 700 espèces réparties dans une centaine de genres. Elles sont répandues dans le monde entier, particulièrement dans les régions tropicales et subtropicales.",
+    "characteristics": "Plantes à fleurs avec feuilles généralement simples et alternes. Fleurs à symétrie radiale, souvent composées de cinq pétales soudés. Les fruits sont principalement des baies ou des capsules.",
+    "history": "La famille des Solanacées trouve son origine principalement en Amérique du Sud, qui est considérée comme le centre de diversification et de domestication de nombreuses espèces.",
+    "main_use": "alimentaire, médicinal, ornemental",
+    "slug": "solanaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Cucurbitacées",
+    "description": "Les Cucurbitacées sont une famille de plantes principalement composées de cucurbitacées comestibles, telles que le concombre, la courge, la pastèque et le melon.",
+    "characteristics": "Plantes grimpantes ou rampantes, avec des feuilles généralement larges et des fruits charnus (souvent en forme de baie).",
+    "history": "Les Cucurbitacées sont cultivées depuis l'Antiquité pour leurs fruits comestibles. Elles sont originaires de régions tropicales et subtropicales.",
+    "main_use": "alimentaire, ornemental",
+    "slug": "cucurbitaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Fabacées",
+    "description": "Les Fabacées, ou légumineuses, sont une famille de plantes qui comprend des plantes cultivées pour leurs graines riches en protéines, comme le haricot, le pois et le soja.",
+    "characteristics": "Plantes herbacées, arbustes ou petits arbres, souvent avec des feuilles composées et des fleurs en forme de papillon.",
+    "history": "Les Fabacées ont été cultivées depuis l'Antiquité pour leurs graines comestibles. Elles sont également utilisées pour améliorer la fertilité des sols en raison de leur capacité à fixer l'azote.",
+    "main_use": "alimentaire, fourrager, médicinal",
+    "slug": "fabaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Astéracées",
+    "description": "Les Astéracées sont une des familles les plus grandes de plantes à fleurs, comprenant des espèces cultivées pour leurs fleurs décoratives ou utilisées comme herbes médicinales.",
+    "characteristics": "Plantes herbacées ou ligneuses avec des fleurs souvent groupées en capitules. Les fruits sont des akènes.",
+    "history": "Cette famille regroupe des plantes utilisées depuis l'Antiquité pour leurs vertus médicinales. Elle est également importante pour ses usages ornementaux.",
+    "main_use": "alimentaire, ornemental, médicinal",
+    "slug": "asteraceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Polygonacées",
+    "description": "Les Polygonacées sont une famille de plantes qui comprend des espèces alimentaires et ornementales, telles que le sarrasin et la rhubarbe.",
+    "characteristics": "Plantes herbacées ou ligneuses, souvent avec des feuilles alternes et des tiges creuses. Les fruits sont généralement des akènes ou des noix.",
+    "history": "Les Polygonacées sont cultivées depuis des siècles, notamment pour leurs graines (comme le sarrasin) et leurs tiges comestibles (comme la rhubarbe).",
+    "main_use": "alimentaire, ornemental",
+    "slug": "polygonaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Rosacées",
+    "description": "Les Rosacées sont une famille de plantes qui inclut de nombreuses espèces cultivées pour leurs fruits comestibles ou pour leur beauté, comme les pommes, les poires et les fraises.",
+    "characteristics": "Plantes souvent épineuses, avec des fleurs généralement actinomorphes et des fruits charnus ou secs.",
+    "history": "Les Rosacées ont été cultivées dès l'Antiquité, principalement en Asie et en Europe. Certaines sont cultivées pour leurs propriétés médicinales et ornementales.",
+    "main_use": "alimentaire, ornemental, médicinal",
+    "slug": "rosaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Vitacées",
+    "description": "Les Vitacées sont une famille composée principalement de vignes, cultivées pour leurs fruits comme le raisin.",
+    "characteristics": "Plantes grimpantes, souvent avec des feuilles simples et des grappes de fleurs petites et discrètes.",
+    "history": "Les Vitacées sont cultivées depuis l'Antiquité, principalement pour la production de raisin à des fins alimentaires et vinicoles.",
+    "main_use": "alimentaire, médicinal",
+    "slug": "vitaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Rutacées",
+    "description": "Les Rutacées sont une famille de plantes comprenant des agrumes comme les oranges, les citrons et les pamplemousses.",
+    "characteristics": "Plantes souvent arbustives ou ligneuses, avec des feuilles souvent aromatiques et des fleurs à pétales généralement cinq.",
+    "history": "Les Rutacées, originaires des régions subtropicales et tropicales, sont cultivées principalement pour leurs fruits riches en vitamine C.",
+    "main_use": "alimentaire, médicinal, ornemental",
+    "slug": "rutaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Actinidiacées",
+    "description": "Les Actinidiacées comprennent des plantes comme le kiwi, cultivées pour leurs fruits comestibles et leur valeur nutritionnelle.",
+    "characteristics": "Plantes grimpantes avec des feuilles alternes. Les fleurs sont petites et souvent solitaires.",
+    "history": "Originaire de Chine, l'actinidia a été cultivée et distribuée à l'international pour ses fruits riches en vitamine C.",
+    "main_use": "alimentaire, ornemental",
+    "slug": "actinidiaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Fagacées",
+    "description": "Les Fagacées sont une famille de plantes ligneuses comprenant des chênes, des hêtres et des châtaigniers.",
+    "characteristics": "Arbres ou arbustes, souvent à feuilles caduques. Les fruits sont des glands ou des fruits secs.",
+    "history": "Les Fagacées sont des arbres emblématiques des forêts tempérées, utilisés depuis des millénaires pour leur bois et leurs fruits.",
+    "main_use": "alimentaire, ornemental",
+    "slug": "fagaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Juglandacées",
+    "description": "La famille des Juglandacées comprend des arbres cultivés pour leurs noix, telles que la noix de Grenoble et la noix de pécan.",
+    "characteristics": "Arbres feuillus, souvent à grandes feuilles composées et à fruits en coques dures.",
+    "history": "Les Juglandacées ont été cultivées pour leurs noix, appréciées depuis l'Antiquité pour leur richesse en graisses et nutriments.",
+    "main_use": "alimentaire",
+    "slug": "juglandaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Éricacées",
+    "description": "Les Éricacées sont une famille qui comprend des plantes souvent acidophiles, cultivées pour leurs fleurs et fruits comme les myrtilles et les airelles.",
+    "characteristics": "Plantes ligneuses ou herbacées, souvent avec des feuilles persistantes et des fleurs en forme de cloche.",
+    "history": "Les Éricacées sont cultivées dans les régions acides, principalement pour leurs fruits comestibles et leurs usages ornementaux.",
+    "main_use": "alimentaire, ornemental",
+    "slug": "ericaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Moracées",
+    "description": "Les Moracées sont une famille de plantes comprenant des espèces comme le figuier et le mûrier.",
+    "characteristics": "Arbres ou arbustes, souvent à feuilles larges et dentées, avec des fruits comestibles ou ornementaux.",
+    "history": "Les Moracées ont été cultivées depuis l'Antiquité, principalement pour leurs fruits comestibles et leur bois.",
+    "main_use": "alimentaire, ornemental",
+    "slug": "moraceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Rhamnacées",
+    "description": "Les Rhamnacées sont une famille de plantes comprenant des arbustes et des arbres, souvent épineux, avec des feuilles simples et des fruits variés.",
+    "characteristics": "Arbustes ou arbres, souvent à feuilles simples et alternes, avec des fleurs petites et des fruits diversifiés.",
+    "history": "Cette famille est répandue dans les régions tempérées et tropicales, avec des usages médicinaux et ornementaux.",
+    "main_use": "médicinal, ornemental",
+    "slug": "rhamnaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Grossulariacées",
+    "description": "Les Grossulariacées comprennent des arbustes comme les groseilliers, cultivés pour leurs petits fruits acidulés.",
+    "characteristics": "Arbustes à feuilles simples et lobées, avec des fleurs en grappes et des baies comestibles.",
+    "history": "Originaires des régions tempérées, ces plantes sont cultivées depuis longtemps pour leurs fruits.",
+    "main_use": "alimentaire",
+    "slug": "grossulariaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Cornacées",
+    "description": "Les Cornacées regroupent des arbres et des arbustes, notamment les cornouillers, connus pour leurs fleurs décoratives.",
+    "characteristics": "Arbres ou arbustes à feuilles simples, avec des inflorescences en cymes et des fruits drupacés.",
+    "history": "Présentes dans les régions tempérées, ces plantes sont utilisées en ornementation et parfois pour leurs fruits.",
+    "main_use": "ornemental, alimentaire",
+    "slug": "cornaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Lamiacées",
+    "description": "Les Lamiacées sont une grande famille de plantes herbacées ou arbustives, incluant de nombreuses herbes aromatiques.",
+    "characteristics": "Plantes à tiges carrées, feuilles opposées, et fleurs bilabiées, souvent très aromatiques.",
+    "history": "Cultivées depuis l'Antiquité pour leurs propriétés culinaires et médicinales, elles sont répandues mondialement.",
+    "main_use": "alimentaire, médicinal, ornemental",
+    "slug": "lamiaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Lauracées",
+    "description": "Les Lauracées sont une famille de plantes ligneuses, comprenant des arbres et des arbustes, souvent aromatiques.",
+    "characteristics": "Arbres ou arbustes à feuilles persistantes, avec des fleurs discrètes et des fruits en drupes.",
+    "history": "Principalement tropicales, certaines espèces comme le laurier sont utilisées en cuisine et en parfumerie.",
+    "main_use": "alimentaire, médicinal, ornemental",
+    "slug": "lauraceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Betulacées",
+    "description": "Les Betulacées sont une famille de plantes ligneuses comprenant des arbres et des arbustes caducs, tels que les bouleaux, les aulnes et les noisetiers, caractérisés par leurs feuilles simples et leurs chatons pendants.",
+    "characteristics": "Arbres ou arbustes à feuilles simples, alternes, souvent dentées, avec des inflorescences en chatons unisexués apparaissant avant ou en même temps que les feuilles.",
+    "history": "Originaires principalement de l'hémisphère nord, les Betulacées sont présentes dans les régions tempérées et ont une longue histoire d'utilisation pour leur bois et leurs fruits.",
+    "main_use": "bois, alimentaire, ornemental",
+    "slug": "betulaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Tiliacées",
+    "description": "Les Tiliacées regroupent principalement des arbres et des arbustes, comme les tilleuls, connus pour leurs grandes feuilles en forme de cœur et leurs fleurs parfumées.",
+    "characteristics": "Plantes ligneuses à feuilles simples, alternes, souvent dentées, avec des inflorescences en cymes et des fleurs généralement hermaphrodites.",
+    "history": "Principalement tropicales, certaines espèces comme le tilleul sont utilisées en médecine traditionnelle et en ornementation.",
+    "main_use": "médicinal, ornemental",
+    "slug": "tiliaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Valérianacées",
+    "description": "Les Valérianacées sont une famille de plantes herbacées, souvent odorantes, comprenant des espèces utilisées en phytothérapie pour leurs propriétés sédatives.",
+    "characteristics": "Plantes herbacées à feuilles opposées, simples ou composées, avec des inflorescences en cymes et des fleurs souvent parfumées.",
+    "history": "Réparties dans les régions tempérées, ces plantes sont cultivées pour leurs usages médicinaux et ornementaux.",
+    "main_use": "médicinal, ornemental",
+    "slug": "valerianaceae",
+    "familyPicture": "generic-family.jpg"
+  },
+  {
+    "name": "Amaranthacées",
+    "description": "Les Amaranthacées sont une famille cosmopolite de plantes herbacées ou arbustives, incluant des espèces alimentaires, médicinales et ornementales.",
+    "characteristics": "Plantes à feuilles simples, alternes ou opposées, sans stipules, avec des fleurs petites, souvent regroupées en inflorescences denses.",
+    "history": "Présentes dans le monde entier, certaines espèces comme l'amarante et le quinoa sont cultivées depuis l'Antiquité pour leurs graines nutritives.",
+    "main_use": "alimentaire, médicinal, ornemental",
+    "slug": "amaranthaceae",
+    "familyPicture": "generic-family.jpg"
+  }
+]

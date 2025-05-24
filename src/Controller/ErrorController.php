@@ -8,6 +8,10 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ErrorController extends AbstractController
 {
+
+// j'ai mis en place ce controller juste pour tester la redirection vers des pages d'erreurs personalisées coté utilisateur
+// mais je n'ai mis ça en place que sur quelques controllers dans la classe de controller UserController
+
         #[Route('/error/403', name: 'app_error_403')]
     public function error403(): Response
     {

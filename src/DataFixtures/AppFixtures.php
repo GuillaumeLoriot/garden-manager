@@ -40,7 +40,8 @@ class AppFixtures extends Fixture
                 ->setCharacteristics($familyItem['characteristics'])
                 ->setHistory($familyItem['history'])
                 ->setMainUse($familyItem['main_use'])
-                ->setSlug($familyItem['slug']);
+                ->setSlug($familyItem['slug'])
+                ->setFamilyPicture($familyItem['familyPicture']);
             $manager->persist($family);
 
             // j'enregistre la toute mes familles dans un tableau pour pouvoir ensuite les lié avec chaque plante
