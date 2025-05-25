@@ -58,29 +58,31 @@ final class UserController extends AbstractController
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
 
-            $ProfilePictureFile = $editForm->get('profilePicture')->getData();
-            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/images/uploads/user';
+            $oldFilename = $user->getProfilePicture();
+            $profilePictureFile = $editForm->get('profilePicture')->getData();
+            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/images/uploads/users';
 
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
-            if ($ProfilePictureFile) {
-                $ProfilePictureFileName = $fileUploader->upload($uploadDir, $ProfilePictureFile);
-                $user->setProfilePicture($ProfilePictureFileName);
-            }
-
-            try {
-                // Ici, nettoyage avant de modifier le nom du fichier
-                if ($user->getProfilePicture() !== null) {
-                    unlink(__DIR__ . "/../../public/images/uploads/user/" . $user->getProfilePicture());
+            if ($profilePictureFile) {
+                $profilePictureFileName = $fileUploader->upload($uploadDir, $profilePictureFile);
+                $user->setProfilePicture($profilePictureFileName);
+                
+                try {
+                    // Ici, nettoyage avant de modifier le nom du fichier
+                    if ($user->getProfilePicture() !== null) {
+                        unlink($uploadDir . "/" . $oldFilename);
+                    }
+                } catch (\Exception $e) {
+    
+                    $editForm->addError(new FormError("Impossible de supprimer l'ancienne photo."));
                 }
-            } catch (\Exception $e) {
-
-                $editForm->addError(new FormError("Impossible de supprimer l'ancienne photo."));
             }
+
             $em->flush();
 
             $this->addFlash('success', "Votre profil a bien été mis à jour");
 
-            $this->redirectToRoute('app_user_profile', ['id' => $user->getId()]);
+            return $this->redirectToRoute('app_user_profile', ['id' => $user->getId()]);
         }
 
         return $this->render('user/edit.html.twig', ['user' => $user, 'edit_form' => $editForm]);
@@ -219,7 +221,7 @@ final class UserController extends AbstractController
         if ($registerForm->isSubmitted() && $registerForm->isValid()) {
 
             $ProfilePictureFile = $registerForm->get('profilePicture')->getData();
-            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/uploads/images/users';
+            $uploadDir = $this->getParameter('kernel.project_dir') . '/public/images/uploads/users';
 
             /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $imageFile */
             if ($ProfilePictureFile) {
