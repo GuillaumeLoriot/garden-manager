@@ -5,6 +5,45 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="text-red-700 text-center text-7xl mt-16">page About</h1>
-<p>explication de l'appli et de ses fonctionalités</p>
+<main class="min-h-screen px-6 py-12 bg-gray-50 text-gray-800">
+  <section class="max-w-4xl mx-auto mt-20">
+    <h1 class="text-4xl font-bold text-blue-900 mb-6 text-center">À propos du projet</h1>
+
+    <article class="space-y-6 text-lg leading-relaxed">
+      <p>
+        Ce projet est une application Symfony développée pour permettre aux utilisateurs de gérer leur potager personnel.
+        Il permet de consulter des informations sur différentes familles de plantes, de rechercher et filtrer des plantes
+        selon leurs besoins, et d'organiser des zones de culture personnalisées.
+      </p>
+
+      <p>
+        Chaque utilisateur peut créer un compte, accéder à son profil, ajouter des plantes à ses zones, et enrichir sa
+        galerie d'images pour illustrer l'évolution de son jardin. L'interface d'administration (basée sur EasyAdmin)
+        permet la gestion complète des utilisateurs, plantes, familles et zones.
+      </p>
+
+      <h2 class="text-2xl font-semibold text-blue-800 mt-10">Utilité</h2>
+      <ul class="list-disc list-inside">
+        <li>Suivre les périodes de semis, plantation et récolte des plantes</li>
+        <li>Faciliter la planification et la compatibilité des cultures</li>
+        <li>Centraliser les informations botaniques dans une interface claire</li>
+        <li>Gérer une galerie d'images personnelle pour visualiser son potager au fil du temps</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold text-blue-800 mt-10">Fonctionnalités à venir</h2>
+      <ul class="list-disc list-inside">
+        <li>Alerte de compatibilité des plantes dans une même zone</li>
+        <li>Ajout d'un calendrier visuel avec rappels personnalisés</li>
+        <li>Possibilité de partager ses zones ou sa galerie avec d'autres utilisateurs</li>
+        <li>Amélioration de l'expérience mobile et responsive</li>
+        <li>Ajout de recommandations automatiques selon les saisons</li>
+      </ul>
+
+      <p class="mt-8">
+        Ce projet est encore en cours d'évolution. De nombreuses améliorations sont prévues pour enrichir
+        l'expérience utilisateur et rendre la gestion du potager encore plus intuitive.
+      </p>
+    </article>
+  </section>
+</main>
 {% endblock %}

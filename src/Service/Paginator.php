@@ -15,9 +15,9 @@ private int $limit = 12;
     }
 
     /**
- * @param mixed $query La requête ou les données à paginer.
- * @param Request $request La requête HTTP (pour récupérer le numéro de page).
- * @param int|null $limit Nombre d’éléments par page (optionnel, configuré par défaut via service.yaml et variable d'environnement ).
+ * @param mixed $query la requête ou les données à paginer.
+ * @param Request $request la requête HTTP (pour récupérer le numéro de page).
+ * @param int|null $limit nombre d’éléments par page (optionnel, configuré par défaut via service.yaml et variable d'environnement ).
  *
  * @return \Knp\Component\Pager\Pagination\PaginationInterface Résultat paginé.
  */

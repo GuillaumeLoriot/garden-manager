@@ -26,12 +26,12 @@ final class IndexController extends AbstractController
         ]);
         $searchForm->handleRequest($request);
 
-        
+
         $foundPlants = null;
-        
+
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
             $query = $plantRepository->findBySearchBar($criteria);
-            $foundPlants = $paginator->paginate($query, $request);   
+            $foundPlants = $paginator->paginate($query, $request);
         }
         // ce else if est uniquement la pour s'adapter à la manière dont paginator travail. Lorsque la recherhe est
         //  faite la première fois, le form est submited donc ça passe bien dans la condition mais lorsque je clique sur
@@ -42,12 +42,11 @@ final class IndexController extends AbstractController
         // ne vas en bdd; ce n'est qu'une recherche simple. Avec cette solution la pagination fonctionne même s'il reste
         // dans le profiler une erreur 422. Je vais continuer a avancé sur le reste du projet mais n'aurais peu être pas le temps 
         // de régler ça avant le rendu..
-        elseif($request->query->has('page')){
+        elseif ($request->query->has('page')) {
             $query = $plantRepository->findBySearchBar($criteria);
             $foundPlants = $paginator->paginate($query, $request);
         }
- 
-        
+
 
         return $this->render('index/home.html.twig', [
             'search_form' => $searchForm,
@@ -59,7 +58,6 @@ final class IndexController extends AbstractController
     #[Route('/about', name: 'app_about')]
     public function about(): Response
     {
-
 
         return $this->render('index/about.html.twig', []);
     }

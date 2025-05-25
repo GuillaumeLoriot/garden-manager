@@ -8,9 +8,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class FileUploader
 {
-
-
-
     public function __construct(
         private SluggerInterface $slugger,
     ) {
@@ -19,12 +16,12 @@ class FileUploader
 
     // ce service peut faire de l'upload de fichier mais dans ce projet, il ne sera utilisé que pour de l'upload d'images
 
-      /**
+    /**
      * Upload un fichier dans un dossier donné.
      *
-     * @param UploadedFile $file Le fichier à uploader
-     * @param string $targetDirectory Le dossier cible d'upload
-     * @return string Le nom du fichier sauvegardé
+     * @param UploadedFile $file le fichier à uploader
+     * @param string $targetDirectory le dossier cible d'upload
+     * @return string le nom du fichier sauvegardé
      */
     public function upload(string $targetDirectory, UploadedFile $file): string
     {
@@ -34,7 +31,7 @@ class FileUploader
 
         try {
             $file->move($targetDirectory, $fileName);
-            
+
         } catch (FileException $e) {
             throw new \Exception('Erreur lors du chargement du fichier.');
         }

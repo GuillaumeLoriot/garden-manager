@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Family;
 use App\Service\Paginator;
 use App\Repository\FamilyRepository;
-use Doctrine\ORM\Mapping\OrderBy;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

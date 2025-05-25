@@ -96,8 +96,8 @@ class SearchCriteriaType extends AbstractType
                 'label' => 'Rechercher',
             ])
 
-            // j'ai ajouter cete event listener car pour mes filtre, je ne suis interessé que par la periode de l'année pas l'année. 
-            // Le problème est que, au submit si je ne remplis pas l'année, ça ne fonctionne pas. 
+            // j'ai ajouter cet event listener car pour mes filtres, je ne suis interessé que par la periode de l'année, pas l'année. 
+            // le problème est que, au submit si je ne remplis pas l'année, ça ne fonctionne pas. 
             // j'ai donc pensé à me brancher avant le submit pour y forcé une année fictive comme celle de ma bdd
             ->addEventListener(FormEvents::PRE_SUBMIT, function (PreSubmitEvent $event) {
                 $data = $event->getData();
@@ -118,10 +118,10 @@ class SearchCriteriaType extends AbstractType
 
                 $event->setData($data);
             })
-            
+
             ->getForm();
 
-            
+
 
     }
 

@@ -24,10 +24,10 @@ class UserRegistrationType extends AbstractType
                 'required' => true,
                 'invalid_message' => 'le username doit être compris entre 5 et 50 charactères',
                 'label' => 'Nom utilisateur',
-                            'attr' => [
-                'minlength' => 5,
-                'maxlength' => 50,
-            ],
+                'attr' => [
+                    'minlength' => 5,
+                    'maxlength' => 50,
+                ],
             ])
             ->add('email', EmailType::class, [
                 'invalid_message' => 'Email invalid',
@@ -40,10 +40,10 @@ class UserRegistrationType extends AbstractType
                 'required' => true,
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répéter le mot de passe'],
-                            'attr' => [
-                'minlength' => 4,
-                'maxlength' => 50,
-            ],
+                'attr' => [
+                    'minlength' => 4,
+                    'maxlength' => 50,
+                ],
             ])
             ->add('presentation', TextareaType::class, [
                 'required' => false,
@@ -57,7 +57,7 @@ class UserRegistrationType extends AbstractType
                     new Image
                 ]
             ])
-            ->add('submit', SubmitType::class,[
+            ->add('submit', SubmitType::class, [
                 'label' => "Confirmer"
             ])
 

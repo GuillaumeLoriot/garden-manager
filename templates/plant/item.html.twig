@@ -6,9 +6,9 @@
 
 {% block body %}
   <main class="h-screen flex justify-evenly items-center">
-    <section  id="general-infos" class="flex rounded-2xl w-[50%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+    <section id="general-infos" class="flex rounded-2xl w-[50%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
       <div class="flex flex-col justify-around items-center rounded-2xl">
-        <img src="{{ asset('images/' ~ plant.plantPicture) }}" alt="Photo de la plante {{ plant.name }}" class="rounded-2xl ml-5" />
+        <img src="{{ asset('images/default/' ~ plant.plantPicture) }}" alt="Photo de la plante {{ plant.name }}" class="rounded-2xl ml-5" />
         <a href="{{ path('app_families_item', { id: plant.family.id }) }}" class="bg-blue-900 text-[#ffffff] text-center w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform ml-5">Voir famille des {{ plant.family.name }}</a>
       </div>
 
@@ -49,7 +49,7 @@
 
         <li class="flex justify-between mt-5">
           <div>
-            <p >Eau :</p>
+            <p>Eau :</p>
             <div>
               {% if plant.waterNeed >= 1 and plant.waterNeed < 5 %}
                 {% for i in 1..plant.waterNeed %}
@@ -96,7 +96,7 @@
       </ul>
     </section>
 
-    <section  id="details" class="flex flex-col rounded-2xl w-[45%] min-h-[75vh] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
+    <section id="details" class="flex flex-col rounded-2xl w-[45%] min-h-[75vh] m-5 bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow">
       <ul class="flex flex-col justify-evenly p-8">
         <li class="text-3xl font-bold text-[#374151] pb-6">
           <h2>Détails</h2>

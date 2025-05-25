@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class PlantController extends AbstractController
 {
 
-        #[Route('/plants', name: 'app_plants_list')]
+    #[Route('/plants', name: 'app_plants_list')]
     public function list(PlantRepository $plantRepository, Request $request, Paginator $paginator): Response
     {
         $query = $plantRepository->findBy([], ['name' => 'ASC']);

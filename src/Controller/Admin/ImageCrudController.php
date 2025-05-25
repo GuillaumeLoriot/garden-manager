@@ -26,7 +26,7 @@ class ImageCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
 
-            // Affichage de la vignette en index et détail
+            // affichage de la vignette en index et détail
             ImageField::new('fileName', 'Image')
                 ->setBasePath('/images/default')
                 ->hideOnForm(),
@@ -45,7 +45,7 @@ class ImageCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        // Bouton "Voir" en plus de Edit/Delete
+        // bouton "Voir" en plus de Edit/Delete
         $detail = Action::new(Action::DETAIL, 'Voir', 'fas fa-eye')
             ->linkToCrudAction(Action::DETAIL);
 

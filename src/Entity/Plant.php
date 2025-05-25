@@ -32,17 +32,17 @@ class Plant
     #[Assert\Length(min: 3, max: 255, minMessage: "Trop court.", maxMessage: "Trop long.")]
     private ?string $plantPicture = null;
 
-    // Représente le début de la période de semis, exprimée avec une date dans une année fictive (année 2000).
+    // représente le début de la période de semis, exprimée avec une date dans une année fictive (année 2000).
     // L'année N'A AUCUNE VALEUR MÉTIER : seule le mois et le jour seront utilisés pour les calcul.(notification feature )
     // 
-    // Exemple : "2000-03-01" signifie "1er mars de chaque année".
+    // exemple : "2000-03-01" signifie "1er mars de chaque année".
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $sowingPeriodStart = null;
  
-    // Représente la fin de la période de semis.
-    // Idem : l’année est arbitraire, seule la période dans l’année est pertinente.
+    // représente la fin de la période de semis.
+    // idem : l’année est arbitraire, seule la période dans l’année est pertinente.
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Assert\Type(\DateTimeInterface::class)]
     private ?\DateTime $sowingPeriodEnd = null;

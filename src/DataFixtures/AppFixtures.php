@@ -16,7 +16,6 @@ class AppFixtures extends Fixture
 {
 
 
-
     public function __construct()
     {
     }
@@ -49,7 +48,7 @@ class AppFixtures extends Fixture
         }
 
         // --------- PLANTS ------------------------------------------------------
-        // Créer les plantes et les associer aux familles
+        // créer les plantes et les associer aux familles
 
         $plants = [];
 
@@ -88,9 +87,6 @@ class AppFixtures extends Fixture
             $manager->persist($plant);
             $plants[] = $plant;
         }
-
-
-
 
 
         // --------- USERS ----------------------------------------------------------

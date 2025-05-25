@@ -5,41 +5,45 @@
 {% endblock %}
 
 {% block body %}
-  <main class="min-h-screen flex-col justify-evenly ">
+  <main class="min-h-screen flex-col justify-evenly">
     <section id="profile" class="flex justify-center">
-    <div class="flex rounded-2xl w-[70%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow mt-24">
-      <div class="flex flex-col justify-around rounded-2xl w-[30%]">
-        <img src="{{ asset('images/default/' ~ user.profilePicture) }}" alt="Photo de l'utilisateur {{ user.profilePicture }}" class="rounded-2xl ml-5 mt-5" />
-        <a href="{{ path('app_user_edit', { id: user.id }) }}" class="bg-blue-900 text-[#ffffff] text-center w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform ml-5">Modifier le profil</a>
-      </div>
+      <div class="flex rounded-2xl w-[70%] min-h-[75vh] bg-[#ffffff] shadow-xl hover:shadow-2xl hover:shadow-blue-950 transition-shadow mt-24">
+        <div class="flex flex-col justify-around rounded-2xl w-[30%]">
+          <img src="{{ asset('images/default/' ~ user.profilePicture) }}" alt="Photo de l'utilisateur {{ user.profilePicture }}" class="rounded-2xl ml-5 mt-5" />
+          <a href="{{ path('app_user_edit', { id: user.id }) }}" class="bg-blue-900 text-[#ffffff] text-center w-full font-bold text-base p-3 rounded-lg hover:bg-stone-700 active:scale-95 transition-transform transform ml-5">Modifier le profil</a>
+        </div>
 
-      <ul class="flex flex-col justify-evenly p-8 w-[70%]">
-        <li class="text-5xl text-center font-bold text-[#374151] pb-6">
-          <h2>{{ user.username }}</h2>
-        </li>
-        <li class="text-lg text-[#374151]">
-          <p>
-            <span class="font-bold">Email :</span> {{ user.email }}
-          </p>
-        </li>
-        <li class="text-lg text-[#374151]">
-          <p>
-            <span class="font-bold">Présentation :</span> {{ user.presentation }}
-          </p>
-        </li>
-      </ul>
-    </div>
+        <ul class="flex flex-col justify-evenly p-8 w-[70%]">
+          <li class="text-5xl text-center font-bold text-[#374151] pb-6">
+            <h2>{{ user.username }}</h2>
+          </li>
+          <li class="text-lg text-[#374151]">
+            <p>
+              <span class="font-bold">Email :</span> {{ user.email }}
+            </p>
+          </li>
+          <li class="text-lg text-[#374151]">
+            <p>
+              <span class="font-bold">Présentation :</span> {{ user.presentation }}
+            </p>
+          </li>
+        </ul>
+      </div>
     </section>
     <section id="gallery">
       <div class="overflow-x-auto whitespace-nowrap px-4 py-6 space-x-4 flex justify-start">
         {% for image in user.images %}
-          <img src="{{ asset('uploads/images/users/' ~ image.fileName) }}" alt="Image d'un jardin Potager" class="inline-block w-80 h-60 object-cover rounded-lg shadow" />
+          {% if image.fileName starts with 'generic' %}
+            <img src="{{ asset('images/default/' ~ image.fileName) }}" alt="Image d'un jardin Potager" class="inline-block w-80 h-60 object-cover rounded-lg shadow" />
+          {% else %}
+            <img src="{{ asset('images/uploads/users/' ~ image.fileName) }}" alt="Image d'un jardin Potager" class="inline-block w-80 h-60 object-cover rounded-lg shadow" />
+          {% endif %}
         {% else %}
           <p class="text-gray-500">Aucune gallery image pour cet utilisateur.</p>
         {% endfor %}
       </div>
       <div class="flex justify-center my-10 w-full">
-      <a href="{{ path('app_user_gallery_edit') }}" class="text-white bg-blue-900 hover:bg-stone-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 text-center w-[20%]">Editer ma gallerie</a>
+        <a href="{{ path('app_user_gallery_edit') }}" class="text-white bg-blue-900 hover:bg-stone-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-4 py-2 text-center w-[20%]">Editer ma gallerie</a>
       </div>
     </section>
   </main>

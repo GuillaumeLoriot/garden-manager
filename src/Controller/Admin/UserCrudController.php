@@ -23,10 +23,10 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-public function configureFields(string $pageName): iterable
+    public function configureFields(string $pageName): iterable
     {
 
-// Afin de garantir la sécurité du mot de passe j'enlève la possibilité à l'admin de pouvoir en définir un pour un user
+        // Afin de garantir la sécurité du mot de passe j'enlève la possibilité à l'admin de pouvoir en définir un pour un user
 // il faurait plutôt implémenter une logique de réinitialisation de mot de passe accessible au user maisje n'aurais pas le
 // temps de le faire pour ce projet avant le rendu.
 

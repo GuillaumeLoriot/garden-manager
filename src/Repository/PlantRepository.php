@@ -63,29 +63,6 @@ class PlantRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
-    //    public function findBySearchBar($criteria): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->Where('p.category = :category')
-    //    ->andWhere('p.waterNeed = :waterNeed')
-    //    ->andWhere('p.sunlightNeed = :sunlightNeed')
-    //    ->andwhere(':searchedPeriod BETWEEN p.sowingPeriodStart AND p.sowingPeriodEnd')
-    //    ->andwhere(':searchedPeriod BETWEEN p.plantingPeriodStart AND p.plantingPeriodEnd')
-    //    ->andwhere(':searchedPeriod BETWEEN p.harvestPeriodStart AND p.harvestPeriodEnd')
-    //    ->setParameter('category', $criteria->getCategory())
-    //    ->setParameter('waterNeed', $criteria->getWaterNeed())
-    //    ->setParameter('sunlightNeed', $criteria->getSunlightNeed())
-    //    ->setParameter('sowingSearchedPeriod', $criteria->getSowingPeriodSearch())
-    //    ->setParameter('plantingSearchedPeriod', $criteria->getPlantingPeriodSearch())
-    //    ->setParameter('harvestSearchedPeriod', $criteria->getHarvestPeriodSearch())
-//            ->orderBy('p.name', 'ASC')
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-
-
 
 
     //    public function findOneBySomeField($value): ?Plant

@@ -37,27 +37,27 @@ class PlantCrudController extends AbstractCrudController
                 ->hideOnIndex(),
 
             DateField::new('sowingPeriodStart', 'Début semis')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
             DateField::new('sowingPeriodEnd', 'Fin semis')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
             DateField::new('plantingPeriodStart', 'Début plantation')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
             DateField::new('plantingPeriodEnd', 'Fin plantation')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
             DateField::new('harvestPeriodStart', 'Début récolte')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
             DateField::new('harvestPeriodEnd', 'Fin récolte')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
 
             TextEditorField::new('germinationDetails', 'Germination'),
             TextEditorField::new('cultivationDetails', 'Conseils de culture'),
 
             IntegerField::new('growingTime', 'Temps de pousse (jours)')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
             IntegerField::new('waterNeed', 'Besoin en eau')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
             IntegerField::new('sunlightNeed', 'Ensoleillement')
-            ->hideOnIndex(),
+                ->hideOnIndex(),
 
             TextareaField::new('soilNeed', 'Besoins en sol'),
 

@@ -97,8 +97,6 @@ final class UserController extends AbstractController
     #[Route('/user/gallery/edit', name: 'app_user_gallery_edit')]
     public function editGallery(Request $request, FileUploader $fileUploader, EntityManagerInterface $em): Response
     {
-
-
         $image = new Image;
 
         $form = $this->createForm(ImageForm::class, $image);
@@ -131,6 +129,7 @@ final class UserController extends AbstractController
     }
 
 
+
     #[Route('/user/gallery/delete/{id}', name: 'app_user_gallery_delete', methods: ['POST'])]
     public function deleteImage(Image $image, EntityManagerInterface $em, Request $request, CsrfTokenManagerInterface $csrfTokenManager): Response
     {
@@ -142,7 +141,6 @@ final class UserController extends AbstractController
 
             // throw $this->createAccessDeniedException();
         }
-
 
         // ici je gère le csrf token manuellement car je ne fais pas de form type mais je veux garder la même sécurité 
         $submittedToken = $request->request->get('_token');
@@ -177,16 +175,13 @@ final class UserController extends AbstractController
     #[Route('/user/area/list', name: 'app_user_area_list')]
     public function areaList(): Response
     {
-
         $user = $this->getUser();
         // ici je verifie que c'est le bon user qui cherche à acceder à cette route 
         if ($user !== $this->getUser()) {
             throw $this->createAccessDeniedException();
         }
 
-
         $areas = $user->getAreas();
-
 
         return $this->render('user/area/list.html.twig', ['areas' => $areas]);
     }
@@ -206,8 +201,6 @@ final class UserController extends AbstractController
             'area' => $area
         ]);
     }
-
-
 
 
 

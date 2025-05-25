@@ -53,15 +53,15 @@ class FamilyCrudController extends AbstractCrudController
         return $actions
             ->add(Crud::PAGE_INDEX, $detail)
             ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
-            return $action
-                ->setIcon('fas fa-pen')
-                ->setLabel('Voir');
-        })
-                ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
-            return $action
-                ->setIcon('fas fa-trash')
-                ->setLabel('Supprimer');
-        });      
+                return $action
+                    ->setIcon('fas fa-pen')
+                    ->setLabel('Voir');
+            })
+            ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
+                return $action
+                    ->setIcon('fas fa-trash')
+                    ->setLabel('Supprimer');
+            });
 
     }
 }
