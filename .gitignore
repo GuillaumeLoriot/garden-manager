@@ -22,5 +22,8 @@
 ###> symfony/asset-mapper ###
 /public/assets/
 /assets/vendor/
-/public/images/uploads/
+/public/images/uploads/*
+!/public/images/uploads/users/
+/public/images/uploads/users/*
+!/public/images/uploads/users/.gitkeep
 ###< symfony/asset-mapper ###
