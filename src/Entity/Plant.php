@@ -100,9 +100,30 @@ class Plant
     #[ORM\ManyToMany(targetEntity: Area::class, mappedBy: 'plants')]
     private Collection $areas;
 
+    /**
+     * @var Collection<int, Recipe>
+     */
+    #[ORM\ManyToMany(targetEntity: Recipe::class, inversedBy: 'plants')]
+    private Collection $recipes;
+
+    /**
+     * @var Collection<int, self>
+     */
+    #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'friendlyOf')]
+    private Collection $friendlyPlants;
+
+    /**
+     * @var Collection<int, self>
+     */
+    #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'friendlyPlants')]
+    private Collection $friendlyOf;
+
     public function __construct()
     {
         $this->areas = new ArrayCollection();
+        $this->recipes = new ArrayCollection();
+        $this->friendlyPlants = new ArrayCollection();
+        $this->friendlyOf = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -357,4 +378,79 @@ class Plant
   {
     return $this->name;
   }
+
+      /**
+       * @return Collection<int, Recipe>
+       */
+      public function getRecipes(): Collection
+      {
+          return $this->recipes;
+      }
+
+      public function addRecipe(Recipe $recipe): static
+      {
+          if (!$this->recipes->contains($recipe)) {
+              $this->recipes->add($recipe);
+          }
+
+          return $this;
+      }
+
+      public function removeRecipe(Recipe $recipe): static
+      {
+          $this->recipes->removeElement($recipe);
+
+          return $this;
+      }
+
+      /**
+       * @return Collection<int, self>
+       */
+      public function getFriendlyPlants(): Collection
+      {
+          return $this->friendlyPlants;
+      }
+
+      public function addFriendlyPlant(self $friendlyPlant): static
+      {
+          if (!$this->friendlyPlants->contains($friendlyPlant)) {
+              $this->friendlyPlants->add($friendlyPlant);
+          }
+
+          return $this;
+      }
+
+      public function removeFriendlyPlant(self $friendlyPlant): static
+      {
+          $this->friendlyPlants->removeElement($friendlyPlant);
+
+          return $this;
+      }
+
+      /**
+       * @return Collection<int, self>
+       */
+      public function getFriendlyOf(): Collection
+      {
+          return $this->friendlyOf;
+      }
+
+      public function addFriendlyOf(self $friendlyOf): static
+      {
+          if (!$this->friendlyOf->contains($friendlyOf)) {
+              $this->friendlyOf->add($friendlyOf);
+              $friendlyOf->addFriendlyPlant($this);
+          }
+
+          return $this;
+      }
+
+      public function removeFriendlyOf(self $friendlyOf): static
+      {
+          if ($this->friendlyOf->removeElement($friendlyOf)) {
+              $friendlyOf->removeFriendlyPlant($this);
+          }
+
+          return $this;
+      }
 }

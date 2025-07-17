@@ -34,7 +34,7 @@ final class UserController extends AbstractController
             $this->redirectToRoute('app_error_403');
             // ici, je souhaitais juste afficher une page plus sympa que le throw en dessous pour tester. j'ai laisser 
             // les erreurs symphony normales 404, 403 dans le reste du projet.
-            // je laisse les 2 ici pour que tu puisse switcher si tu veux tester.
+            // je laisse les 2 ici pour tester; Voir explication en commentaire dans ErrorController
             // throw $this->createAccessDeniedException();
         }
         return $this->render('user/profile.html.twig', ['user' => $user]);

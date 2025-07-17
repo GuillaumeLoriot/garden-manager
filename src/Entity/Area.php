@@ -27,9 +27,16 @@ class Area
     #[ORM\ManyToMany(targetEntity: Plant::class, inversedBy: 'areas')]
     private Collection $plants;
 
+    /**
+     * @var Collection<int, JournalEntry>
+     */
+    #[ORM\OneToMany(targetEntity: JournalEntry::class, mappedBy: 'area')]
+    private Collection $journalEntries;
+
     public function __construct()
     {
         $this->plants = new ArrayCollection();
+        $this->journalEntries = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,4 +96,34 @@ class Area
   {
     return $this->name;
   }
+
+      /**
+       * @return Collection<int, JournalEntry>
+       */
+      public function getJournalEntries(): Collection
+      {
+          return $this->journalEntries;
+      }
+
+      public function addJournalEntry(JournalEntry $journalEntry): static
+      {
+          if (!$this->journalEntries->contains($journalEntry)) {
+              $this->journalEntries->add($journalEntry);
+              $journalEntry->setArea($this);
+          }
+
+          return $this;
+      }
+
+      public function removeJournalEntry(JournalEntry $journalEntry): static
+      {
+          if ($this->journalEntries->removeElement($journalEntry)) {
+              // set the owning side to null (unless already changed)
+              if ($journalEntry->getArea() === $this) {
+                  $journalEntry->setArea(null);
+              }
+          }
+
+          return $this;
+      }
 }

@@ -63,10 +63,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Area::class, mappedBy: 'user')]
     private Collection $areas;
 
+    /**
+     * @var Collection<int, JournalEntry>
+     */
+    #[ORM\OneToMany(targetEntity: JournalEntry::class, mappedBy: 'user')]
+    private Collection $journalEntries;
+
+    /**
+     * @var Collection<int, Recipe>
+     */
+    #[ORM\OneToMany(targetEntity: Recipe::class, mappedBy: 'user')]
+    private Collection $recipes;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->areas = new ArrayCollection();
+        $this->journalEntries = new ArrayCollection();
+        $this->recipes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -271,4 +285,64 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   {
     return $this->email;
   }
+
+      /**
+       * @return Collection<int, JournalEntry>
+       */
+      public function getJournalEntries(): Collection
+      {
+          return $this->journalEntries;
+      }
+
+      public function addJournalEntry(JournalEntry $journalEntry): static
+      {
+          if (!$this->journalEntries->contains($journalEntry)) {
+              $this->journalEntries->add($journalEntry);
+              $journalEntry->setUser($this);
+          }
+
+          return $this;
+      }
+
+      public function removeJournalEntry(JournalEntry $journalEntry): static
+      {
+          if ($this->journalEntries->removeElement($journalEntry)) {
+              // set the owning side to null (unless already changed)
+              if ($journalEntry->getUser() === $this) {
+                  $journalEntry->setUser(null);
+              }
+          }
+
+          return $this;
+      }
+
+      /**
+       * @return Collection<int, Recipe>
+       */
+      public function getRecipes(): Collection
+      {
+          return $this->recipes;
+      }
+
+      public function addRecipe(Recipe $recipe): static
+      {
+          if (!$this->recipes->contains($recipe)) {
+              $this->recipes->add($recipe);
+              $recipe->setUser($this);
+          }
+
+          return $this;
+      }
+
+      public function removeRecipe(Recipe $recipe): static
+      {
+          if ($this->recipes->removeElement($recipe)) {
+              // set the owning side to null (unless already changed)
+              if ($recipe->getUser() === $this) {
+                  $recipe->setUser(null);
+              }
+          }
+
+          return $this;
+      }
 }
